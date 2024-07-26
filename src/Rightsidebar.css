@@ -1,0 +1,22 @@
+/* Sidebar.css */
+.leftsidebar {
+    width: 250px;
+    background: #f7f7f7;
+    padding: 0.5rem;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+    height: 100%;
+    position: fixed;
+    overflow-y: auto;
+    right: 0;
+    align-items: center;
+}
+
+
+.search-input {
+    background: white;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: large;
+    border: 1px solid grey;
+    padding: 5px;
+ }
