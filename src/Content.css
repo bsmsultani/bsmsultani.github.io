@@ -4,7 +4,7 @@
   justify-content: space-between;
   margin-left: 300px;
   padding: 2rem;
-  height: 100vh;
+  height: 100%;
   width: 100%;
   margin-right: 300px;
 }
@@ -42,15 +42,24 @@
   display: flex;
   justify-content: space-between;
   margin-top: 2rem;
+  margin-bottom: 2rem;;
 }
 
 .nav-button {
   text-decoration: none;
-  background: #007bff;
-  color: white;
-  padding: 0.5rem 1rem;
+  color: black;
+  border: 1px solid grey;
+  text-align: center;
+  padding: 2rem;
+  margin-right: 1rem;
   border-radius: 4px;
+  width: 100%;
 }
+
+.nav-button:hover {
+  background: #f8f9fa;
+}
+
 
 .nav-button:disabled {
   background: #cccccc;

@@ -2,6 +2,96 @@
 import React from 'react';
 import { Link, useParams } from 'react-router-dom';
 import './Content.css'; // Import the CSS for Content
+import ReactMarkdown from 'react-markdown';
+import remarkGfm from 'remark-gfm';
+
+const MarkdownViewer = ({ content }) => {
+  return (
+    <div>
+      <ReactMarkdown children={content} remarkPlugins={[remarkGfm]} />
+    </div>
+  );
+};
+
+
+
+const initialMarkdown = `
+# Welcome to My Markdown Viewer
+
+This is a simple example of how you can render Markdown in a React app.
+
+## Features
+
+- **Bold text**
+- _Italic text_
+- [Links](https://example.com)
+- Lists
+  - Item 1
+  - Item 2
+  - Item 3
+
+\`\`\`javascript
+// Code block
+console.log('Hello, world!');
+\`\`\`
+
+> Blockquotes are also supported!
+
+---
+## Features
+
+- **Bold text**
+- _Italic text_
+- [Links](https://example.com)
+- Lists
+  - Item 1
+  - Item 2
+  - Item 3
+
+\`\`\`javascript
+// Code block
+console.log('Hello, world!');
+\`\`\`
+
+> Blockquotes are also supp
+
+## Features
+
+- **Bold text**
+- _Italic text_
+- [Links](https://example.com)
+- Lists
+  - Item 1
+  - Item 2
+  - Item 3
+
+\`\`\`javascript
+// Code block
+console.log('Hello, world!');
+\`\`\`
+
+> Blockquotes are also supp
+
+## Features
+
+- **Bold text**
+- _Italic text_
+- [Links](https://example.com)
+- Lists
+  - Item 1
+  - Item 2
+  - Item 3
+
+\`\`\`javascript
+// Code block
+console.log('Hello, world!');
+\`\`\`
+
+> Blockquotes are also supp
+
+Enjoy using Markdown in your React app!
+`;
+
 
 // Sample data for topics and posts
 const topics = [
@@ -32,8 +122,7 @@ const Content = () => {
           {post ? (
             <>
               <h2>{post.title}</h2>
-              <p>Content for {post.title}</p>
-              {/* Add more content here */}
+              <MarkdownViewer content={initialMarkdown} />
             </>
           ) : (
             <>
