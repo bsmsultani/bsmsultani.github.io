@@ -33,7 +33,7 @@ const Biography = () => {
                     I love programming, AI and data and my dream is to build my own start up! On my free time, I like to read,
                     go to the gym, hike and take cold plunges! I love meeting new people, you can reach out to me via my socials:
                 </p>
-                <a href='https://google.com'>
+                <a href='https://www.linkedin.com/in/bsmsultani/' target='_blank'>
                     <FaLinkedin size={32} color="#0077B5"></FaLinkedin>
                 </a>
             </div>
