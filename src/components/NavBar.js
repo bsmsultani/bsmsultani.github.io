@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { useNavigate } from 'react-router-dom';
 
 // Styled component for the NavBar container
 const NavBarContainer = styled.div`
@@ -44,11 +45,18 @@ const NavBarButton = styled.button`
 `;
 
 const NavBar = () => {
+    const navigate = useNavigate();
+
+    const handleClick = (path) => {
+        navigate(path);
+    }
+
+
     return (
         <NavBarContainer>
-            <NavBarButton>Home</NavBarButton>
-            <NavBarButton>Blogs</NavBarButton>
-            <NavBarButton>Contact Me</NavBarButton>
+            <NavBarButton onClick={() => handleClick('/')}>Home</NavBarButton>
+            <NavBarButton onClick={() => navigate('/blogs')}>Blogs</NavBarButton>
+            <NavBarButton onClick={() => navigate('/contact')}>Contact Me</NavBarButton>
         </NavBarContainer>
     );
 };
