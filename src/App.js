@@ -1,6 +1,10 @@
 // App.js
 import React, { useEffect } from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import NavBar from './components/NavBar.js';
+import Biography from './components/Biography.js';
+
+
 import './App.css';
 
 // Main App component with routing
@@ -18,7 +22,8 @@ const App = () => {
   return (
   <Router>
     <div className="app">
-      <h1> Under development </h1>
+      <NavBar></NavBar>
+      <Biography></Biography>
     </div>
   </Router>
 )};
