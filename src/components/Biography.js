@@ -1,36 +1,45 @@
+import styled from 'styled-components';
+import { FaLinkedin } from 'react-icons/fa';
+
+const BiographyContainer = styled.div`
+    width: 50%;
+    height: auto;
+    margin: 10px auto;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 20px;
+
+    @media (max-width: 768px) {
+        flex-direction: column;
+        width: 80%;
+    }
+`;
+
+const BioImage = styled.img`
+    height: auto;
+    max-height: 250px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+`;
 
 const Biography = () => {
-
-    const BiographyContainerStyle = {
-        width: '50%',
-        height: '250px',
-        margin: '10px auto',
-        display: 'flex',
-        displayDirection: 'column',
-        gap: '20px'
-    }
-
-    const BioImageStyle = {
-        height: 'auto',
-        borderRadius: '10px',
-        boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1);'
-    }
-
     return (
-        <div style={BiographyContainerStyle}>
-            <div style={{'width' :'80%', 'display' : 'flex', 'flexDirection' : 'column'}}>
+        <BiographyContainer>
+            <div>
                 <h1>Hello Friends!</h1>
-                <p>My name is Bismillah, Millah for short! I am an Entrepreneur, a Data Scientist and a Software Developer.
-                    I love programming, playing with data 
+                <p>
+                    My name is Bismillah, Millah for short! I am an Entrepreneur, a Data Scientist, and a Software Developer.
+                    I love programming, AI and data and my dream is to build my own start up! On my free time, I like to read,
+                    go to the gym, hike and take cold plunges! I love meeting new people, you can reach out to me via my socials:
                 </p>
+                <a href='https://google.com'>
+                    <FaLinkedin size={32} color="#0077B5"></FaLinkedin>
+                </a>
             </div>
-            <img 
-                style={BioImageStyle}
-                src="IMG_6559.jpeg">
-            </img>
-        </div>
-    )
-}
-
+            <BioImage src="IMG_6559.jpeg" alt="Profile" />
+        </BiographyContainer>
+    );
+};
 
 export default Biography;

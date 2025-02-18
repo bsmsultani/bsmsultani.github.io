@@ -21,7 +21,7 @@ const App = () => {
   
   return (
   <Router>
-    <div className="app">
+    <div className="app" style={{"backgroundColor" : "white"}}>
       <NavBar></NavBar>
       <Biography></Biography>
     </div>
