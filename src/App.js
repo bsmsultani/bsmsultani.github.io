@@ -5,6 +5,7 @@ import NavBar from './components/NavBar.js';
 import Biography from './components/Biography.js';
 import Roadmap from './components/Roadmap.js'
 import Projects from './components/Projects.js';
+import Footer from './components/Footer.js';
 
 import './App.css';
 
@@ -22,6 +23,7 @@ const Home = () => {
       <Biography></Biography>
       <Roadmap></Roadmap>
       <Projects></Projects>
+      <Footer></Footer>
     </div>
   )
 }
