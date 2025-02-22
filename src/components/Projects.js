@@ -3,13 +3,20 @@ import styled from "styled-components"
 
 const ProjectCardWrapper = styled.div`
     width: 30%;
-    border-radius: 3px;
+    border-radius: 40px;
+    padding: 3px;
+    border: 1px solid black;
     background-color: white;
     text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     transition: all 0.3s ease;
     &:hover {
         background-color: #ddd;
         transform: scale(1.1);
+    }
+
+    @media (max-width: 768px) {
+        width: 100%;
     }
 
 `;
@@ -17,19 +24,7 @@ const ProjectCardWrapper = styled.div`
 const ProjectImage = styled.img`
     width: 90%;
     border-radius: inherit;
-`;
-
-const ViewFullProjectButton = styled.button`
-    padding: 10px 20px;
-    background-color: #007bff;
-    color: white;
-    border: none;
     cursor: pointer;
-    width: 100%;
-    
-    &:hover {
-        background-color: #0056b3;
-    }
 `;
 
 
@@ -38,20 +33,20 @@ const ViewFullProjectButton = styled.button`
 const ProjectCard = ({ id, image_url, name, description, urls }) => {
     return (
         <ProjectCardWrapper>
-            <h2 style={{"margin" : "5px", "textAlign" : "center"}}>{name}</h2>
+            <h3 style={{"margin" : "5px", "textAlign" : "center"}}>{name}</h3>
             <ProjectImage src={image_url} alt={name} />
             <p>{description}</p>
-            <ViewFullProjectButton className="viewFullProjectButton">
-                View Full Project
-            </ViewFullProjectButton>
         </ProjectCardWrapper>
     );
 };
 
 
+
+
+
 const ProjectContainerBackground = styled.div`
-    background-color: rgb(135, 206, 235);
-    padding: 5% 20%;
+    background-color: rgba(135, 206, 235, 0.3);
+    padding: 0% 20% 5% 20%;
     margin: 50px 0 auto;
 `
 
@@ -65,26 +60,78 @@ const ProjectContainer = styled.div`
 
 `;
 
+const SearchProjectsField = styled.input`
+    width: 40%;
+    border: none;
+    font-size: 16px;
+    height: 35px;
+    padding: 6px;
+    &:focus {
+        outline: none;
+    }
+
+`;
+
+
+const SearchButton = styled.input`
+    font-size: 16px;
+    height: 35px;
+    border: none;
+    padding: 6px;
+    width: 10%;
+    transition: transform 0.1s ease, box-shadow 0.1s ease;
+
+    &:hover {
+        cursor: pointer;
+    }
+
+    &:active {
+        opacity: 0.7;
+    }
+
+    }
+`;
+
+
+const searchWrapperStyle = {
+    textAlign: 'right',
+    padding: '40px 0px',
+}
+
+
 
 
 const Projects = () => {
 
+
     const listofProject = [
         {
-            "name" : "Generate Flashcards with AI (2024 CodeNetwork Hackathon)"
+            "id" : 1,
+            "image_url" : "https://media.licdn.com/dms/image/v2/D4D22AQHLA7ig-azMLw/feedshare-shrink_2048_1536/feedshare-shrink_2048_1536/0/1721830060509?e=1743033600&v=beta&t=MIvgGdnAIXw6QWn_XwF4bu5m5W6PLvVz9XTRURosn2A",
+            "name" : "Generate Flashcards with AI",
+            "description" : "In this project we made a fullstack AI flashcard application."
+        },
+        {
 
-
-        }
+        },
+        {
+            
+        },
     ]
+
+
+
     return(
         <ProjectContainerBackground>
+            <div style={searchWrapperStyle}>
+                <SearchProjectsField type="text" placeholder="search projects"></SearchProjectsField>
+                <SearchButton type="button" value="Search"></SearchButton>
+            </div>
             <ProjectContainer>
-                <ProjectCard id={1} image_url="https://hatrabbits.com/wp-content/uploads/2017/01/random.jpg" name="A picture of an elephant" description="Image Picker Wheel is a special random image generator to pick a random picture from a list of pictures provided by using a wheel. Interactive and fun."
-                urls={["https://google.com", "https://instagram.com"]}></ProjectCard>
-                                <ProjectCard id={1} image_url="https://hatrabbits.com/wp-content/uploads/2017/01/random.jpg" name="A picture of an elephant" description="Image Picker Wheel is a special random image generator to pick a random picture from a list of pictures provided by using a wheel. Interactive and fun."
-                urls={["https://google.com", "https://instagram.com"]}></ProjectCard>
-                                <ProjectCard id={1} image_url="https://hatrabbits.com/wp-content/uploads/2017/01/random.jpg" name="A picture of an elephant" description="Image Picker Wheel is a special random image generator to pick a random picture from a list of pictures provided by using a wheel. Interactive and fun."
-                urls={["https://google.com", "https://instagram.com"]}></ProjectCard>
+                {listofProject.map((project) => (
+                    <ProjectCard id={project.id} image_url={project.image_url} name={project.name} description={project.description}
+                    ></ProjectCard>
+                ))} 
             </ProjectContainer>
         </ProjectContainerBackground>
     )

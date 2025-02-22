@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { FaLinkedin } from 'react-icons/fa';
+import { FaLinkedin, FaGithub } from 'react-icons/fa';
 
 const BiographyContainer = styled.div`
     width: 50%;
@@ -35,6 +35,12 @@ const Biography = () => {
                 </p>
                 <a href='https://www.linkedin.com/in/bsmsultani/' target='_blank'>
                     <FaLinkedin size={32} color="#0077B5"></FaLinkedin>
+                </a>
+                <a href='https://github.com/bsmsultani' target='_blank'>
+                    <FaGithub size={32} color='black'></FaGithub>
+                </a>
+                <a href='https://leetcode.com/u/bismillah_s/' target='_blank'>
+                    <img src='leetcode_logo.png' width={32} height={32}></img>
                 </a>
             </div>
             <BioImage src="IMG_6559.jpeg" alt="Profile" />
