@@ -4,7 +4,7 @@ import styled from "styled-components"
 const ProjectCardWrapper = styled.div`
     width: 30%;
     border-radius: 40px;
-    padding: 3px;
+    padding: 10px;
     border: 1px solid black;
     background-color: white;
     text-align: center;
@@ -31,10 +31,17 @@ const ProjectImage = styled.img`
 
 
 const ProjectCard = ({ id, image_url, name, description, urls }) => {
+
+    const handleProjectClick = (data) => {
+        console.log("clicked")
+        console.log(data)
+    }
+
+
     return (
-        <ProjectCardWrapper>
+        <ProjectCardWrapper onClick={() => handleProjectClick({id})}>
             <h3 style={{"margin" : "5px", "textAlign" : "center"}}>{name}</h3>
-            <ProjectImage src={image_url} alt={name} />
+            <ProjectImage src={image_url} alt={name} onClick={() => handleProjectClick({id})} />
             <p>{description}</p>
         </ProjectCardWrapper>
     );
@@ -56,7 +63,16 @@ const ProjectContainer = styled.div`
     justify-content: space-between;
     @media (max-width: 768px) {
         flex-direction: column;
+
     }
+    
+    flex-wrap: wrap;
+    & > div {
+        flex: 1 1 30%;  /* Allow each project to take 30% of the container width */
+        margin: 10px; /* Add space between projects */
+    }
+
+
 
 `;
 
@@ -70,6 +86,10 @@ const SearchProjectsField = styled.input`
         outline: none;
     }
 
+    @media(max-width: 768px) {
+        width: auto;
+    }
+
 `;
 
 
@@ -78,7 +98,7 @@ const SearchButton = styled.input`
     height: 35px;
     border: none;
     padding: 6px;
-    width: 10%;
+    width: auto;
     transition: transform 0.1s ease, box-shadow 0.1s ease;
 
     &:hover {
@@ -87,17 +107,24 @@ const SearchButton = styled.input`
 
     &:active {
         opacity: 0.7;
+        transform: scale(1.1);
     }
 
     }
 `;
 
 
-const searchWrapperStyle = {
-    textAlign: 'right',
-    padding: '40px 0px',
-}
 
+
+const SearchWrapper = styled.div`
+    text-align: right;
+    padding: 3% 1%;
+
+    @media(max-width: 768px) {
+        text-align: center;
+    }
+
+`;
 
 
 
@@ -117,16 +144,24 @@ const Projects = () => {
         {
             
         },
+        {
+
+        },
+        {
+
+        }
+
+
     ]
 
 
 
     return(
         <ProjectContainerBackground>
-            <div style={searchWrapperStyle}>
+            <SearchWrapper>
                 <SearchProjectsField type="text" placeholder="search projects"></SearchProjectsField>
                 <SearchButton type="button" value="Search"></SearchButton>
-            </div>
+            </SearchWrapper>
             <ProjectContainer>
                 {listofProject.map((project) => (
                     <ProjectCard id={project.id} image_url={project.image_url} name={project.name} description={project.description}
