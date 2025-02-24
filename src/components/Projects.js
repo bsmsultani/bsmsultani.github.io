@@ -1,5 +1,9 @@
 import styled from "styled-components"
-
+import { useState } from "react";
+import { RxCross2 } from "react-icons/rx";
+import Markdown from "react-markdown";
+import { useEffect } from "react";
+import markdown from "./utils";
 
 const ProjectCardWrapper = styled.div`
     width: 30%;
@@ -28,22 +32,86 @@ const ProjectImage = styled.img`
 `;
 
 
+const Overlay = styled.div`
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 999;
+
+`;
+
+const Popup = styled.div`
+    position: fixed;
+    margin-top: 10px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: white;
+    border: 1px solid #ccc;
+    z-index: 1000;
+    width: 60%;
+    border: 1px solid black;
+    border-radius: 40px;
+    padding: 40px;
+    height: 100%;
+    overflow-y: auto;
+
+    @media (max-width: 768px) {
+        width: 100%;
+        border-radius: 0;
+    }
+`;
 
 
 const ProjectCard = ({ id, image_url, name, description, urls }) => {
 
+
+
+    const [showProjectArticle, setShowProjectArticle] = useState(false);
+    const [projectArticle, setProjectArticle] = useState('');
+
+
     const handleProjectClick = (data) => {
+
+        // sends out a request and recieves a response
+
         console.log("clicked")
         console.log(data)
+        // test
+
+
+ 
+        setProjectArticle(markdown);
+        
+        setShowProjectArticle(true);
     }
 
 
     return (
-        <ProjectCardWrapper onClick={() => handleProjectClick({id})}>
-            <h3 style={{"margin" : "5px", "textAlign" : "center"}}>{name}</h3>
-            <ProjectImage src={image_url} alt={name} onClick={() => handleProjectClick({id})} />
-            <p>{description}</p>
-        </ProjectCardWrapper>
+        <>
+            <ProjectCardWrapper onClick={() => handleProjectClick({id})}>
+                <h3 style={{"margin" : "5px", "textAlign" : "center"}}>{name}</h3>
+                <ProjectImage src={image_url} alt={name} />
+                <p>{description}</p>
+            </ProjectCardWrapper>
+
+            {showProjectArticle && (
+                <div style={{"all" : "unset"}}>
+                    <Overlay></Overlay>
+                    <Popup >
+                        <div>
+                            <RxCross2 size={32} onClick={()=> setShowProjectArticle(false)}></RxCross2>
+                        </div>
+                        <Markdown>{projectArticle}</Markdown>
+                    </Popup>
+                    
+                </div>
+            )}
+        </>
+
     );
 };
 
