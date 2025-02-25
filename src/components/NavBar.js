@@ -57,6 +57,7 @@ const NavBar = () => {
             <NavBarButton onClick={() => handleClick('/')}>Home</NavBarButton>
             <NavBarButton onClick={() => navigate('/blogs')}>Blogs</NavBarButton>
             <NavBarButton onClick={() => navigate('/contact')}>Contact Me</NavBarButton>
+            <NavBarButton>Login</NavBarButton>
         </NavBarContainer>
     );
 };

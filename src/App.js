@@ -31,6 +31,7 @@ const Blog = () => {
   return (
     <div>
       <NavBar></NavBar>
+      <Projects></Projects>
     </div>
   )
 }

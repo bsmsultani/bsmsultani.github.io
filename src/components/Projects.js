@@ -3,7 +3,7 @@ import { useState } from "react";
 import { RxCross2 } from "react-icons/rx";
 import Markdown from "react-markdown";
 import { useEffect } from "react";
-import markdown from "./utils";
+import listofProject from './utils.js';
 
 const ProjectCardWrapper = styled.div`
     width: 30%;
@@ -20,7 +20,9 @@ const ProjectCardWrapper = styled.div`
     }
 
     @media (max-width: 768px) {
-        width: 100%;
+        width: 90%;
+        border-radius: 0px;
+        padding: 0px;
     }
 
 `;
@@ -62,16 +64,16 @@ const Popup = styled.div`
     @media (max-width: 768px) {
         width: 100%;
         border-radius: 0;
+
     }
 `;
 
 
-const ProjectCard = ({ id, image_url, name, description, urls }) => {
+const ProjectCard = ({ id, image_url, name, description, markdown}) => {
 
 
 
     const [showProjectArticle, setShowProjectArticle] = useState(false);
-    const [projectArticle, setProjectArticle] = useState('');
 
 
     const handleProjectClick = (data) => {
@@ -84,8 +86,6 @@ const ProjectCard = ({ id, image_url, name, description, urls }) => {
 
 
  
-        setProjectArticle(markdown);
-        
         setShowProjectArticle(true);
     }
 
@@ -105,8 +105,9 @@ const ProjectCard = ({ id, image_url, name, description, urls }) => {
                         <div>
                             <RxCross2 size={32} onClick={()=> setShowProjectArticle(false)}></RxCross2>
                         </div>
-                        <Markdown>{projectArticle}</Markdown>
+                        <Markdown>{markdown}</Markdown>
                     </Popup>
+
                     
                 </div>
             )}
@@ -123,7 +124,14 @@ const ProjectContainerBackground = styled.div`
     background-color: rgba(135, 206, 235, 0.3);
     padding: 0% 20% 5% 20%;
     margin: 50px 0 auto;
+
+    @media (max-width: 768px) {
+        padding: 0px;
+    }
 `
+
+    
+
 
 
 const ProjectContainer = styled.div`
@@ -131,14 +139,16 @@ const ProjectContainer = styled.div`
     justify-content: space-between;
     @media (max-width: 768px) {
         flex-direction: column;
-
+        align-items: center;
+        
     }
-    
+
     flex-wrap: wrap;
     & > div {
         flex: 1 1 30%;  /* Allow each project to take 30% of the container width */
         margin: 10px; /* Add space between projects */
     }
+
 
 
 
@@ -156,6 +166,7 @@ const SearchProjectsField = styled.input`
 
     @media(max-width: 768px) {
         width: auto;
+
     }
 
 `;
@@ -167,6 +178,7 @@ const SearchButton = styled.input`
     border: none;
     padding: 6px;
     width: auto;
+    color: black;
     transition: transform 0.1s ease, box-shadow 0.1s ease;
 
     &:hover {
@@ -190,6 +202,7 @@ const SearchWrapper = styled.div`
 
     @media(max-width: 768px) {
         text-align: center;
+        padding: 3% 0%;
     }
 
 `;
@@ -199,28 +212,6 @@ const SearchWrapper = styled.div`
 const Projects = () => {
 
 
-    const listofProject = [
-        {
-            "id" : 1,
-            "image_url" : "https://media.licdn.com/dms/image/v2/D4D22AQHLA7ig-azMLw/feedshare-shrink_2048_1536/feedshare-shrink_2048_1536/0/1721830060509?e=1743033600&v=beta&t=MIvgGdnAIXw6QWn_XwF4bu5m5W6PLvVz9XTRURosn2A",
-            "name" : "Generate Flashcards with AI",
-            "description" : "In this project we made a fullstack AI flashcard application."
-        },
-        {
-
-        },
-        {
-            
-        },
-        {
-
-        },
-        {
-
-        }
-
-
-    ]
 
 
 
@@ -232,7 +223,7 @@ const Projects = () => {
             </SearchWrapper>
             <ProjectContainer>
                 {listofProject.map((project) => (
-                    <ProjectCard id={project.id} image_url={project.image_url} name={project.name} description={project.description}
+                    <ProjectCard id={project.id} image_url={project.image_url} name={project.name} description={project.description} markdown={project.markdown}
                     ></ProjectCard>
                 ))} 
             </ProjectContainer>
