@@ -1,6 +1,6 @@
 
 
-const listofProject = [
+export const listOfProject = [
     {
         "id" : 1,
         "image_url" : "https://miro.medium.com/v2/resize:fit:1400/format:webp/1*H6L8M2_Gd2KL94FZ_F5Bog.png",
@@ -89,4 +89,17 @@ So, if you're thinking of diving into a project like this, go for it! Embrace th
 
 
 
-export default listofProject;
+export const listOfBlog = [
+    {
+        "id" : 1,
+        "image_url" : "https://media2.dev.to/dynamic/image/width=1000,height=500,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fi%2F9da6rnlxgxq8fv8degu4.png",
+        "name" : "Is Leetcode worth it",
+        "description" : "Software Developers spend an enormous amount of time on leetcode in order to land a high paying job. But is it worth your time? ",
+
+    },
+    {},
+    {}
+]
+
+
+

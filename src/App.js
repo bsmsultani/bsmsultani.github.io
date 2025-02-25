@@ -21,7 +21,7 @@ const Home = () => {
     <div>
       <NavBar></NavBar>
       <Biography></Biography>
-      <Projects></Projects>
+      <Projects isBlogs={false}></Projects>
       <Footer></Footer>
     </div>
   )
@@ -31,7 +31,7 @@ const Blog = () => {
   return (
     <div>
       <NavBar></NavBar>
-      <Projects></Projects>
+      <Projects isBlogs={true}></Projects>
     </div>
   )
 }

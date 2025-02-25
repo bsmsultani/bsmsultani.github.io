@@ -3,7 +3,7 @@ import { useState } from "react";
 import { RxCross2 } from "react-icons/rx";
 import Markdown from "react-markdown";
 import { useEffect } from "react";
-import listofProject from './utils.js';
+import { listOfBlog, listOfProject } from './utils.js';
 
 const ProjectCardWrapper = styled.div`
     width: 30%;
@@ -209,10 +209,7 @@ const SearchWrapper = styled.div`
 
 
 
-const Projects = () => {
-
-
-
+const Projects = (props) => {
 
 
     return(
@@ -222,10 +219,19 @@ const Projects = () => {
                 <SearchButton type="button" value="Search"></SearchButton>
             </SearchWrapper>
             <ProjectContainer>
-                {listofProject.map((project) => (
-                    <ProjectCard id={project.id} image_url={project.image_url} name={project.name} description={project.description} markdown={project.markdown}
-                    ></ProjectCard>
-                ))} 
+                {props.isBlogs ? (
+                    listOfBlog.map((blog) => (
+                        <ProjectCard id={blog.id} image_url={blog.image_url} name={blog.name} description={blog.description} markdown={blog.markdown}
+                        ></ProjectCard>
+                    ))
+                    
+                ) : (
+                    listOfProject.map((project) => (
+                        <ProjectCard id={project.id} image_url={project.image_url} name={project.name} description={project.description} markdown={project.markdown}
+                        ></ProjectCard>
+                    ))
+                )}
+       
             </ProjectContainer>
         </ProjectContainerBackground>
     )
