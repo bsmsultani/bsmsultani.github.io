@@ -4,10 +4,7 @@ const FooterWrapper = styled.footer`
     width: 100%;
     min-height: 100px;
     background-color: white;
-    align-items: center;
-    justify-content: center;
-    display: flex;
-    flex-direction: column;
+    text-align: center;
 
 `
 const Footer = () =>  {

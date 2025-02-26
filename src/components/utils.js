@@ -34,6 +34,7 @@ I started with the client-side, built using React.js. This part handles user int
 with two main components:
 
 - **Search Bar**: The user can input prompts like 'generate a story of a cat riding a donkey'.
+![Search Bar Image]("https://drive.google.com/file/d/1wNRHI5gdNeB01v8ld4qFY-q1F_r-CR9O/view?usp=sharing")
 - **Generated story**: Displays the generated story and its audio.
 
 ##### Crafting the Server-Side
@@ -85,7 +86,7 @@ So, if you're thinking of diving into a project like this, go for it! Embrace th
         "image_url" : "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTrZ-7WaPN7GaW3pyKsuN81bxqicuqlhxGX0g&s",
         "name" : "Find Anything In A Video",
         "description" : "In this innovative group project we made a fullstack application, allowing users to analyse and search objects in a video.",
-        "tags" : []
+        "tags" : ["JavaScript", "NodeJS", "ExpressJS", "ReactJs", "Google"]
         
     },
 

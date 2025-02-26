@@ -6,6 +6,7 @@ import Biography from './components/Biography.js';
 import Roadmap from './components/Roadmap.js'
 import Projects from './components/Projects.js';
 import Footer from './components/Footer.js';
+import '@coreui/coreui/dist/css/coreui.min.css'
 
 import './App.css';
 

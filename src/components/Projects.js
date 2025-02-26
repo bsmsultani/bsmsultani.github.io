@@ -4,6 +4,40 @@ import { RxCross2 } from "react-icons/rx";
 import Markdown from "react-markdown";
 import { useEffect } from "react";
 import { listOfBlog, listOfProject } from './utils.js';
+import { CCarousel, CCarouselCaption, CCarouselItem, CImage } from '@coreui/react'
+
+
+
+
+export const CarouselWithCaptionsExample = () => {
+    return (
+      <CCarousel controls indicators>
+        <CCarouselItem>
+          <CImage className="d-block w-100" src="https://picsum.photos/800/400?random=1" alt="slide 1" />
+          <CCarouselCaption className="d-none d-md-block">
+            <h5>First slide label</h5>
+            <p>Some representative placeholder content for the first slide.</p>
+          </CCarouselCaption>
+        </CCarouselItem>
+        <CCarouselItem>
+          <CImage className="d-block w-100" src="https://picsum.photos/800/400?random=2" alt="slide 2" />
+          <CCarouselCaption className="d-none d-md-block">
+            <h5>Second slide label</h5>
+            <p>Some representative placeholder content for the second slide.</p>
+          </CCarouselCaption>
+        </CCarouselItem>
+        <CCarouselItem>
+          <CImage className="d-block w-100" src="https://picsum.photos/800/400?random=3" alt="slide 3" />
+          <CCarouselCaption className="d-none d-md-block">
+            <h5>Third slide label</h5>
+            <p>Some representative placeholder content for the third slide.</p>
+          </CCarouselCaption>
+        </CCarouselItem>
+      </CCarousel>
+    )
+}
+
+  
 
 const ProjectCardWrapper = styled.div`
     width: 30%;
@@ -69,6 +103,15 @@ const Popup = styled.div`
 `;
 
 
+const MyCarousel = () => {
+    return (
+        <Carousel>
+            <Carousel.Item>
+
+            </Carousel.Item>
+        </Carousel>
+    );}  
+
 const ProjectCard = ({ id, image_url, name, description, markdown, tags}) => {
 
 
@@ -111,6 +154,7 @@ const ProjectCard = ({ id, image_url, name, description, markdown, tags}) => {
                         <div>
                             <RxCross2 style={{"cursor" : "pointer"}} size={32} onClick={()=> setShowProjectArticle(false)}></RxCross2>
                         </div>
+                        <CarouselWithCaptionsExample></CarouselWithCaptionsExample>
                         <Markdown>{markdown}</Markdown>
                     </Popup>
 
