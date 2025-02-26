@@ -11,7 +11,7 @@ export const listOfProject = [
 
 ### The story of "StoryTellerGenie": How I Brought AI-Powered Storytelling to Life
 
-Hey there, this is a story of how I created a full-stack application for my CAB432 Assignment 1, where I created an innovative storytelling application called "StoryTellerGenie." This project was a blast to work on, and I can't wait to share the key takeaways and how I managed to pull it off.
+Hey there, this is a story of how I created a full-stack application, where I created an innovative storytelling application called "StoryTellerGenie." This project was a blast to work on, and I can't wait to share the key takeaways and how I managed to pull it off.
 
 #### The Vision
 
@@ -30,9 +30,11 @@ To bring this vision to life, I used a mix of cutting-edge technologies:
 
 ##### Building the Client-Side
 
-I started with the client-side, built using React.js. This part handles user interactions and sends API requests to the server. The main components include:
-- **Home**: Where users can input prompts and view generated stories.
-- **Story**: Displays the generated story and its audio.
+I started with the client-side, built using React.js. This part handles user interactions and sends API requests to the server. It is pretty straight forward,
+with two main components:
+
+- **Search Bar**: The user can input prompts like 'generate a story of a cat riding a donkey'.
+- **Generated story**: Displays the generated story and its audio.
 
 ##### Crafting the Server-Side
 
@@ -75,7 +77,7 @@ So, if you're thinking of diving into a project like this, go for it! Embrace th
         "image_url" : "https://media.licdn.com/dms/image/v2/D4D22AQHLA7ig-azMLw/feedshare-shrink_2048_1536/feedshare-shrink_2048_1536/0/1721830060509?e=1743638400&v=beta&t=hBSkQqrjgNmIw30IuV9m4GoQRqvqEHV_SF09ALyGmzs",
         "name" : "Generate Flashcards with AI",
         "description" : "In this application we made fullstack AI powered flashcard generator and won the best Community Award!",
-        "tags" : [],
+        "tags" : ["Javascript", "OpenAI", "ReactJS", "ExpressJS"],
 
     },
     {

@@ -109,7 +109,7 @@ const ProjectCard = ({ id, image_url, name, description, markdown, tags}) => {
                     <Overlay></Overlay>
                     <Popup >
                         <div>
-                            <RxCross2 size={32} onClick={()=> setShowProjectArticle(false)}></RxCross2>
+                            <RxCross2 style={{"cursor" : "pointer"}} size={32} onClick={()=> setShowProjectArticle(false)}></RxCross2>
                         </div>
                         <Markdown>{markdown}</Markdown>
                     </Popup>
