@@ -69,7 +69,7 @@ const Popup = styled.div`
 `;
 
 
-const ProjectCard = ({ id, image_url, name, description, markdown}) => {
+const ProjectCard = ({ id, image_url, name, description, markdown, tags}) => {
 
 
 
@@ -96,6 +96,12 @@ const ProjectCard = ({ id, image_url, name, description, markdown}) => {
                 <h3 style={{"margin" : "5px", "textAlign" : "center"}}>{name}</h3>
                 <ProjectImage src={image_url} alt={name} />
                 <p>{description}</p>
+                <div style={{"display" : "flex", "flexWrap" : "wrap", "alignItems" : "center", "justifyContent": "center"}}>
+
+                    {tags.map((tag, index) => (
+                        <span key={index} style={{"backgroundColor" : "#DBE2FF", "margin" : "1px", "padding" : "5px", "flexShrink" : 0, "borderRadius" : "5px"}}>{tag}</span> 
+                    ))}
+                </div>
             </ProjectCardWrapper>
 
             {showProjectArticle && (
@@ -221,13 +227,14 @@ const Projects = (props) => {
             <ProjectContainer>
                 {props.isBlogs ? (
                     listOfBlog.map((blog) => (
-                        <ProjectCard id={blog.id} image_url={blog.image_url} name={blog.name} description={blog.description} markdown={blog.markdown}
+                        <ProjectCard id={blog.id} image_url={blog.image_url} name={blog.name} description={blog.description} markdown={blog.markdown} tags={blog.tags}
                         ></ProjectCard>
                     ))
                     
                 ) : (
                     listOfProject.map((project) => (
-                        <ProjectCard id={project.id} image_url={project.image_url} name={project.name} description={project.description} markdown={project.markdown}
+                        <ProjectCard id={project.id} image_url={project.image_url} name={project.name} description={project.description} markdown={project.markdown} tags={project.tags}
+
                         ></ProjectCard>
                     ))
                 )}

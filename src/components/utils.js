@@ -6,9 +6,10 @@ export const listOfProject = [
         "image_url" : "https://miro.medium.com/v2/resize:fit:1400/format:webp/1*H6L8M2_Gd2KL94FZ_F5Bog.png",
         "name" : "Generate Stories With AI",
         "description" : "This is a story of how I brought AI-Powered storytelling to life!",
+        "tags" : ["Javascript", "S3", "ReactJs", "Docker", "OpenAI", "Google"],
         "markdown" : `
 
-### The Magic of StoryTellerGenie: How I Brought AI-Powered Storytelling to Life
+### The story of "StoryTellerGenie": How I Brought AI-Powered Storytelling to Life
 
 Hey there, this is a story of how I created a full-stack application for my CAB432 Assignment 1, where I created an innovative storytelling application called "StoryTellerGenie." This project was a blast to work on, and I can't wait to share the key takeaways and how I managed to pull it off.
 
@@ -73,14 +74,16 @@ So, if you're thinking of diving into a project like this, go for it! Embrace th
         "id" : 2,
         "image_url" : "https://media.licdn.com/dms/image/v2/D4D22AQHLA7ig-azMLw/feedshare-shrink_2048_1536/feedshare-shrink_2048_1536/0/1721830060509?e=1743638400&v=beta&t=hBSkQqrjgNmIw30IuV9m4GoQRqvqEHV_SF09ALyGmzs",
         "name" : "Generate Flashcards with AI",
-        "description" : "In this application we made fullstack AI powered flashcard generator and won the best Community Award!"
+        "description" : "In this application we made fullstack AI powered flashcard generator and won the best Community Award!",
+        "tags" : [],
 
     },
     {
         "id" : 3,
         "image_url" : "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTrZ-7WaPN7GaW3pyKsuN81bxqicuqlhxGX0g&s",
         "name" : "Find Anything In A Video",
-        "description" : "In this innovative group project we made a fullstack application, allowing users to analyse and search objects in a video."
+        "description" : "In this innovative group project we made a fullstack application, allowing users to analyse and search objects in a video.",
+        "tags" : []
         
     },
 
@@ -95,10 +98,9 @@ export const listOfBlog = [
         "image_url" : "https://media2.dev.to/dynamic/image/width=1000,height=500,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fi%2F9da6rnlxgxq8fv8degu4.png",
         "name" : "Is Leetcode worth it",
         "description" : "Software Developers spend an enormous amount of time on leetcode in order to land a high paying job. But is it worth your time? ",
+        "tags" : [],
 
     },
-    {},
-    {}
 ]
 
 
