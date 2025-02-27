@@ -194,7 +194,12 @@ const ProjectCard = ({ id, image_url, name, description, markdown, tags, haveCar
 
                         <MarkDownWrapper>
                             <Markdown>{markdown}</Markdown>
-                            <div dangerouslySetInnerHTML={{__html: htmlContent}}></div>
+                            {htmlContent ? (
+                                <div dangerouslySetInnerHTML={{__html: htmlContent}}></div>
+                            ) : (
+                                <></>
+                            )}
+                            
                         </MarkDownWrapper>
                     </Popup>
 

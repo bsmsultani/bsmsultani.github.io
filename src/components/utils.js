@@ -101,7 +101,7 @@ This project taught me a lot about AI, APIs, and deployment. But most importantl
         "id" : 4,
         "image_url" : "https://diamondvision.com/wp-content/uploads/2019/07/Dilated-Pupils-800x533-1.jpg",
         "name" : "How I Uncovered the Effects of Coffee on Human Performance",
-        "description" : "In this group project, we collected reaction times, and fitted a linear model to determine if it effects human",
+        "description" : "In this group project, we collected reaction times, and fitted a linear model to determine if it effects reaction time.",
         "tags" : ["Linear Regression", "Statistics", "Modelling"],
         "htmlFile": "mxb242-assignment.html"
 
