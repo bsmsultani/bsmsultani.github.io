@@ -79,6 +79,7 @@ So, if you're thinking of diving into a project like this, go for it! Embrace th
         "name" : "Generate Flashcards with AI",
         "description" : "In this application we made fullstack AI powered flashcard generator and won the best Community Award!",
         "tags" : ["Javascript", "OpenAI", "ReactJS", "ExpressJS"],
+        "markdown" : `# Article in progress.`
 
     },
     {
@@ -86,7 +87,8 @@ So, if you're thinking of diving into a project like this, go for it! Embrace th
         "image_url" : "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTrZ-7WaPN7GaW3pyKsuN81bxqicuqlhxGX0g&s",
         "name" : "Find Anything In A Video",
         "description" : "In this innovative group project we made a fullstack application, allowing users to analyse and search objects in a video.",
-        "tags" : ["JavaScript", "NodeJS", "ExpressJS", "ReactJs", "Google"]
+        "tags" : ["JavaScript", "NodeJS", "ExpressJS", "ReactJs", "Google"],
+        "markdown" : `# Article in progress.`
         
     },
 
@@ -94,16 +96,74 @@ So, if you're thinking of diving into a project like this, go for it! Embrace th
 ]
 
 
-
 export const listOfBlog = [
     {
         "id" : 1,
-        "image_url" : "https://media2.dev.to/dynamic/image/width=1000,height=500,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fi%2F9da6rnlxgxq8fv8degu4.png",
-        "name" : "Is Leetcode worth it",
-        "description" : "Software Developers spend an enormous amount of time on leetcode in order to land a high paying job. But is it worth your time? ",
-        "tags" : [],
+        "image_url" : "https://assets.leetcode.com/uploads/2020/01/23/meta-chart.jpeg",
+        "name" : "How to Solve Leetcode Problem: 55 Jump Game",
+        "description" : "",
+        "tags" : ["Leetcode", "Medium"],
+        "haveCarsoul" : false,
+        "markdown" : `
+
+
+# Stuck on LeetCode? Here’s How I Solved the "Jump Game" Problem
+
+## The Problem:
+
+The problem is pretty straightforward, but it can be tricky to solve efficiently:
+
+- You are given an array, and you start at index 0.
+- Each element in the array (\`nums[i]\`) represents the maximum number of jumps you can make from that position.
+- Your task is to determine if you can reach the end of the array. Return \`True\` if you can, and \`False\` otherwise.
+
+## My Initial Thoughts
+
+When I first read the problem, It sounded like a fun puzzle, but as I started working on it, I realised it was more difficult than I initially thought.
+
+
+
+
+## The Solution
+
+After some trial and error, I came up with a solution using a **greedy algorithm**. Here’s how it works:
+
+### Code
+
+\`\`\`python
+def canJump(self, nums: List[int]) -> bool:
+    goal = len(nums) - 1
+    for i in range(len(nums) - 1, -1, -1):
+        if i + nums[i] >= goal:
+            goal = i
+
+    return goal == 0
+
+\`\`\`
+
+In order to reach the end of the array, we need at least \`len(nums) - 1\` to achieve this, so this is our initial goal.
+As we enter the loop we check if \`index\` (number of jumps we need to get to our current index) \`+ nums[index]\` (number of 
+jumps we can make at the current index) is sufficient to reach the end of the array. **why is this important?** It tells
+us whether we can reach the end of the list, if we can make it to the current index. This allows us to revise our initial goal.
+Because we know that as long as we can reach that index, we should have sufficient jumps to reach the end. Therefore our goal
+becomes that index.
+
+
+We continue doing this until we reach the index 0. As long as we don't next anymore jumps to reach the next index \`jumps == 0\`
+then we return \`True\`.
+
+
+
+
+    `
 
     },
+    {
+        "tags": [],
+    },
+    {
+        "tags" : []
+    }
 ]
 
 

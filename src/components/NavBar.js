@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import { useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 // Styled component for the NavBar container
 const NavBarContainer = styled.div`
@@ -33,6 +34,7 @@ const NavBarButton = styled.button`
     border: none;
     cursor: pointer;
     transition: all 0.3s ease;
+    text-decoration: none;
 
     &:hover {
         background-color: #ddd;
@@ -45,18 +47,12 @@ const NavBarButton = styled.button`
 `;
 
 const NavBar = () => {
-    const navigate = useNavigate();
-
-    const handleClick = (path) => {
-        navigate(path);
-    }
-
 
     return (
         <NavBarContainer>
-            <NavBarButton onClick={() => handleClick('/')}>Home</NavBarButton>
-            <NavBarButton onClick={() => navigate('/blogs')}>Blogs</NavBarButton>
-            <NavBarButton onClick={() => navigate('/contact')}>Contact Me</NavBarButton>
+            <NavBarButton as={Link} to="/">Home</NavBarButton>
+            <NavBarButton as={Link} to="/blogs">Blogs</NavBarButton>
+            <NavBarButton as={Link} to="/contact">Contact Me</NavBarButton>
             <NavBarButton>Login</NavBarButton>
         </NavBarContainer>
     );

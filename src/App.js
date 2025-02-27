@@ -1,6 +1,6 @@
 // App.js
 import React, { useEffect } from 'react';
-import { BrowserRouter as Router, Route, Routes, BrowserRouter } from 'react-router-dom';
+import {Route, Routes, HashRouter } from 'react-router-dom';
 import NavBar from './components/NavBar.js';
 import Biography from './components/Biography.js';
 import Roadmap from './components/Roadmap.js'
@@ -53,13 +53,14 @@ const App = () => {
   }, [])
   
   return (
-    <BrowserRouter>
+    <HashRouter>
       <Routes>
         <Route path='/' element={<Home />}></Route>
         <Route path='/blogs' element={<Blog/>}></Route>
+        <Route path='/blogs/:blogNumber' element={<Blog></Blog>}></Route>
         <Route path='/contact' element={<ContactMe/>}></Route>
       </Routes>
-    </BrowserRouter>
+    </HashRouter>
 )};
 
 export default App;

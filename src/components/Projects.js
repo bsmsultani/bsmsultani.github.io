@@ -5,6 +5,7 @@ import Markdown from "react-markdown";
 import { useEffect } from "react";
 import { listOfBlog, listOfProject } from './utils.js';
 import { CCarousel, CCarouselCaption, CCarouselItem, CImage } from '@coreui/react'
+import { Link, useParams } from "react-router-dom";
 
 
 
@@ -54,9 +55,12 @@ const ProjectCardWrapper = styled.div`
     }
 
     @media (max-width: 768px) {
-        width: 90%;
+        width: 80%;
         border-radius: 0px;
-        padding: 0px;
+        padding: 10px;
+        &:hover {
+            transform: scale(1.009);
+        }
     }
 
 `;
@@ -112,12 +116,12 @@ const MyCarousel = () => {
         </Carousel>
     );}  
 
-const ProjectCard = ({ id, image_url, name, description, markdown, tags}) => {
+const ProjectCard = ({ id, image_url, name, description, markdown, tags, haveCarousel}) => {
 
+    const blogNumber = useParams();
 
-
+    // show project article if 
     const [showProjectArticle, setShowProjectArticle] = useState(false);
-
 
     const handleProjectClick = (data) => {
 
@@ -135,6 +139,7 @@ const ProjectCard = ({ id, image_url, name, description, markdown, tags}) => {
 
     return (
         <>
+            
             <ProjectCardWrapper onClick={() => handleProjectClick({id})}>
                 <h3 style={{"margin" : "5px", "textAlign" : "center"}}>{name}</h3>
                 <ProjectImage src={image_url} alt={name} />
@@ -146,6 +151,7 @@ const ProjectCard = ({ id, image_url, name, description, markdown, tags}) => {
                     ))}
                 </div>
             </ProjectCardWrapper>
+            
 
             {showProjectArticle && (
                 <div style={{"all" : "unset"}}>
@@ -154,7 +160,13 @@ const ProjectCard = ({ id, image_url, name, description, markdown, tags}) => {
                         <div>
                             <RxCross2 style={{"cursor" : "pointer"}} size={32} onClick={()=> setShowProjectArticle(false)}></RxCross2>
                         </div>
-                        <CarouselWithCaptionsExample></CarouselWithCaptionsExample>
+                        {haveCarousel ? (
+                            <CarouselWithCaptionsExample></CarouselWithCaptionsExample>
+                        ) : 
+                        (
+                            <></>
+                        )}
+                        
                         <Markdown>{markdown}</Markdown>
                     </Popup>
 
@@ -272,12 +284,14 @@ const Projects = (props) => {
                 {props.isBlogs ? (
                     listOfBlog.map((blog) => (
                         <ProjectCard id={blog.id} image_url={blog.image_url} name={blog.name} description={blog.description} markdown={blog.markdown} tags={blog.tags}
+                        haveCarousel={blog.haveCarousel}
                         ></ProjectCard>
                     ))
                     
                 ) : (
                     listOfProject.map((project) => (
                         <ProjectCard id={project.id} image_url={project.image_url} name={project.name} description={project.description} markdown={project.markdown} tags={project.tags}
+                        haveCarousel={project.haveCarousel} 
 
                         ></ProjectCard>
                     ))
