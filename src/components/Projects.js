@@ -99,12 +99,24 @@ const Popup = styled.div`
     height: 100%;
     overflow-y: auto;
 
+    & > .markdown * img {
+        width: 90%;
+    }
     @media (max-width: 768px) {
         width: 100%;
         border-radius: 0;
 
     }
 `;
+
+
+const MarkDownWrapper = styled.div`
+    & * img {
+        width: 90%;
+        
+    }
+`;
+
 
 
 const MyCarousel = () => {
@@ -166,8 +178,10 @@ const ProjectCard = ({ id, image_url, name, description, markdown, tags, haveCar
                         (
                             <></>
                         )}
-                        
-                        <Markdown>{markdown}</Markdown>
+
+                        <MarkDownWrapper>
+                            <Markdown>{markdown}</Markdown>
+                        </MarkDownWrapper>
                     </Popup>
 
                     

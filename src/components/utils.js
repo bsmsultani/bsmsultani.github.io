@@ -1,4 +1,4 @@
-
+import React from "react"
 
 export const listOfProject = [
     {
@@ -24,7 +24,7 @@ To bring this vision to life, I used a mix of cutting-edge technologies:
 - **Google Translation API**: To translate stories into multiple languages.
 - **Google Text-to-Speech API**: For converting text into lifelike audio narrations.
 - **Amazon S3**: For storing story files and page counter data.
-- **Docker**: To containerize the application for easy deployment and scalability.
+- **Docker**: To containerise the application for easy deployment and scalability.
 
 #### The Journey
 
@@ -34,8 +34,12 @@ I started with the client-side, built using React.js. This part handles user int
 with two main components:
 
 - **Search Bar**: The user can input prompts like 'generate a story of a cat riding a donkey'.
-![Search Bar Image]("https://drive.google.com/file/d/1wNRHI5gdNeB01v8ld4qFY-q1F_r-CR9O/view?usp=sharing")
+![Search Bar Image](${"/projects/generate_story_1.png"})
 - **Generated story**: Displays the generated story and its audio.
+![Displaying generated story](${"/projects/generate_story_2.png"})
+- **Translate story**: Generate narration and translation in various different language.
+![Generated story in French](${"/projects/generate_story_3.png"})
+
 
 ##### Crafting the Server-Side
 
@@ -47,6 +51,7 @@ The server-side, implemented with Express.js, is where the magic happens. It pro
 ##### Deployment with Docker
 
 To ensure the app runs smoothly across different environments, I used Docker. The Dockerfile sets up a Node.js runtime, installs necessary packages, and defines how the app starts. This made deployment a breeze!
+![Generated story in French](${"/projects/generate_story_4.png"})
 
 #### Challenges and Triumphs
 
@@ -60,7 +65,7 @@ As the app grew more complex, debugging became a challenge. Breaking down the co
 
 ##### Unfinished Features
 
-I had to postpone some features, like picture integration, due to resource limitations. But that's okay—I learned that sometimes, you have to prioritize to stay on track.
+I had to postpone some features, like picture integration, due to resource limitations. But that's okay—I learned that sometimes, you have to prioritise to stay on track.
 
 #### The Outcome
 
@@ -151,9 +156,6 @@ becomes that index.
 
 We continue doing this until we reach the index 0. As long as we don't next anymore jumps to reach the next index \`jumps == 0\`
 then we return \`True\`.
-
-
-
 
     `
 
