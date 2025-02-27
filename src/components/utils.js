@@ -75,7 +75,8 @@ After weeks of hard work, StoryTellerGenie was ready! Users can now generate, tr
 
 This project taught me a lot about AI, APIs, and deployment. But most importantly, it showed me the power of creativity and persistence. With the right tools and mindset, you can turn even the wildest ideas into reality.
 
-So, if you're thinking of diving into a project like this, go for it! Embrace the challenges, celebrate the victories, and most importantly, have fun along the way. Happy coding!
+[If you want to check out the project, click this link](https://github.com/bsmsultani/CAB432-assignment1)
+
         `
     },
     {
@@ -96,6 +97,15 @@ So, if you're thinking of diving into a project like this, go for it! Embrace th
         "markdown" : `# Article in progress.`
         
     },
+    {
+        "id" : 4,
+        "image_url" : "https://diamondvision.com/wp-content/uploads/2019/07/Dilated-Pupils-800x533-1.jpg",
+        "name" : "How I Uncovered the Effects of Coffee on Human Performance",
+        "description" : "In this group project, we collected reaction times, and fitted a linear model to determine if it effects human",
+        "tags" : ["Linear Regression", "Statistics", "Modelling"],
+        "htmlFile": "mxb242-assignment.html"
+
+    }
 
 
 ]

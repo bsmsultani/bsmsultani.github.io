@@ -41,7 +41,7 @@ export const CarouselWithCaptionsExample = () => {
   
 
 const ProjectCardWrapper = styled.div`
-    width: 30%;
+    max-width: 30%;
     border-radius: 40px;
     padding: 10px;
     border: 1px solid black;
@@ -55,7 +55,7 @@ const ProjectCardWrapper = styled.div`
     }
 
     @media (max-width: 768px) {
-        width: 80%;
+        max-width: 80%;
         border-radius: 0px;
         padding: 10px;
         &:hover {
@@ -128,9 +128,22 @@ const MyCarousel = () => {
         </Carousel>
     );}  
 
-const ProjectCard = ({ id, image_url, name, description, markdown, tags, haveCarousel}) => {
+const ProjectCard = ({ id, image_url, name, description, markdown, tags, haveCarousel, htmlFile}) => {
 
     const blogNumber = useParams();
+
+    const [htmlContent, setHtmlContent] = useState(null);
+
+    useEffect(() => {
+      // Fetch HTML content using Promise.then() chaining
+      fetch(htmlFile)
+        .then(response => response.text())  // Convert the response to text (HTML)
+        .then(htmlResponse => {
+          setHtmlContent(htmlResponse);  // Update state with the resolved HTML content
+
+        });
+    }, []);  // Empty dependency array, so the effect runs once when the component mounts
+  
 
     // show project article if 
     const [showProjectArticle, setShowProjectArticle] = useState(false);
@@ -181,6 +194,7 @@ const ProjectCard = ({ id, image_url, name, description, markdown, tags, haveCar
 
                         <MarkDownWrapper>
                             <Markdown>{markdown}</Markdown>
+                            <div dangerouslySetInnerHTML={{__html: htmlContent}}></div>
                         </MarkDownWrapper>
                     </Popup>
 
@@ -298,14 +312,14 @@ const Projects = (props) => {
                 {props.isBlogs ? (
                     listOfBlog.map((blog) => (
                         <ProjectCard id={blog.id} image_url={blog.image_url} name={blog.name} description={blog.description} markdown={blog.markdown} tags={blog.tags}
-                        haveCarousel={blog.haveCarousel}
+                        haveCarousel={blog.haveCarousel} htmlFile={blog.htmlFile}
                         ></ProjectCard>
                     ))
                     
                 ) : (
                     listOfProject.map((project) => (
                         <ProjectCard id={project.id} image_url={project.image_url} name={project.name} description={project.description} markdown={project.markdown} tags={project.tags}
-                        haveCarousel={project.haveCarousel} 
+                        haveCarousel={project.haveCarousel} htmlFile={project.htmlFile}
 
                         ></ProjectCard>
                     ))
