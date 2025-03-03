@@ -130,7 +130,7 @@ const MyCarousel = () => {
 
 
 
-const ProjectCard = ({ id, image_url, name, description, markdown, tags, haveCarousel, htmlFile}) => {
+const ProjectCard = ({ id, image_url, name, description, markdown, tags, haveCarousel, htmlFile, isBlogs}) => {
     const navigate = useNavigate();
 
 
@@ -150,11 +150,14 @@ const ProjectCard = ({ id, image_url, name, description, markdown, tags, haveCar
     }, [htmlFile]);
   
 
-    // show project article if 
-    const [showProjectArticle, setShowProjectArticle] = useState(false);
 
     const handleProjectClick = (data) => {
-        navigate(`/blogs/${id}`)
+        if (isBlogs) {
+            navigate(`/blogs/${id}`)
+        }
+        else {
+            navigate(`/projects/${id}`)
+        }
     }
     
 
@@ -282,7 +285,10 @@ const FilterWrapper = styled.div`
 
 
 const Projects = (props) => {
+    const navigate = useNavigate();
+
     const blogTagFrequency = {};
+
     const projectTagFrequency = {};
 
     listOfBlog.forEach((blog) => {
@@ -376,7 +382,7 @@ const Projects = (props) => {
                 {props.isBlogs ? (
                     listOfBlog.map((blog) => (
                         <ProjectCard id={blog.id} image_url={blog.image_url} name={blog.name} description={blog.description} markdown={blog.markdown} tags={blog.tags}
-                            haveCarousel={blog.haveCarousel} htmlFile={blog.htmlFile}
+                            haveCarousel={blog.haveCarousel} htmlFile={blog.htmlFile} isBlogs={props.isBlogs}
                         ></ProjectCard>
 
                     ))
@@ -384,7 +390,7 @@ const Projects = (props) => {
                 ) : (
                     listOfProject.map((project) => (
                         <ProjectCard id={project.id} image_url={project.image_url} name={project.name} description={project.description} markdown={project.markdown} tags={project.tags}
-                        haveCarousel={project.haveCarousel} htmlFile={project.htmlFile}
+                        haveCarousel={project.haveCarousel} htmlFile={project.htmlFile} isBlogs={props.isBlogs}
                         ></ProjectCard>
                         
                     ))
@@ -397,7 +403,16 @@ const Projects = (props) => {
                     <Overlay></Overlay>
                     <Popup >
                         <div>
-                            <RxCross2 style={{"cursor" : "pointer"}} size={32} onClick={()=> setModalContent("")}></RxCross2>
+                            <RxCross2 style={{"cursor" : "pointer"}} size={32} onClick={()=> {
+                                setModalContent("");
+                                if (props.isBlogs) {
+                                    navigate("/blogs");
+                                    
+                                }
+                                else {
+                                    navigate("/");
+                                }
+                            }}></RxCross2>
                         </div>
                         {modalContent.haveCarousel ? (
                             <CarouselWithCaptionsExample></CarouselWithCaptionsExample>

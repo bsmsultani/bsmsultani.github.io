@@ -63,7 +63,7 @@ const App = () => {
         <Route path='/' element={<Home />}></Route>
         <Route path='/blogs' element={<Blog/>}></Route>
         <Route path='/blogs/:id' element={<Blog></Blog>}></Route>
-        <Route path='/projects/:id'element={<Projects></Projects>}></Route>
+        <Route path='/projects/:id'element={<Home />}></Route>
         <Route path='/contact' element={<ContactMe/>}></Route>
       </Routes>
     </HashRouter>
