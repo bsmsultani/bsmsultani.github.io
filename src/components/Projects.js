@@ -130,7 +130,6 @@ const MyCarousel = () => {
 
 const ProjectCard = ({ id, image_url, name, description, markdown, tags, haveCarousel, htmlFile}) => {
 
-    const blogNumber = useParams();
 
     const [htmlContent, setHtmlContent] = useState(null);
 
@@ -139,10 +138,12 @@ const ProjectCard = ({ id, image_url, name, description, markdown, tags, haveCar
       fetch(htmlFile)
         .then(response => response.text())  // Convert the response to text (HTML)
         .then(htmlResponse => {
-          setHtmlContent(htmlResponse);  // Update state with the resolved HTML content
+            if (htmlFile) {
+            setHtmlContent(htmlResponse);  // Update state with the resolved HTML content
+            }
 
         });
-    }, []);  // Empty dependency array, so the effect runs once when the component mounts
+    }, [htmlFile]);  // Empty dependency array, so the effect runs once when the component mounts
   
 
     // show project article if 
@@ -303,16 +304,93 @@ const SearchWrapper = styled.div`
 `;
 
 
+const FilterWrapper = styled.div`
+    display: inline-block;
+
+`;
+
+
+
+
+
 
 const Projects = (props) => {
+    const blogTagFrequency = {};
+    const projectTagFrequency = {};
+
+    listOfBlog.forEach((blog) => {
+        blog.tags.forEach((tag) => {
+            if (blogTagFrequency[tag]) {
+                blogTagFrequency[tag]++;
+            }
+            else { blogTagFrequency[tag] = 1; }
+        })
+    })
+
+
+    listOfProject.forEach((project) => {
+        project.tags.forEach((tag) => {
+            if (projectTagFrequency[tag]) {
+                projectTagFrequency[tag]++;
+            }
+            else { projectTagFrequency[tag] = 1; }
+        })
+    })
+
+
+
+
+
+
+
 
 
     return(
         <ProjectContainerBackground>
+            
             <SearchWrapper>
                 <SearchProjectsField type="text" placeholder="search projects"></SearchProjectsField>
                 <SearchButton type="button" value="Search"></SearchButton>
             </SearchWrapper>
+            <FilterWrapper>
+                {props.isBlogs ? (
+                    Object.entries(blogTagFrequency)
+                    .sort(([, countA], [, countB]) => countB - countA)
+                    .map(([tag, count]) => (
+                        <FilterWrapper>
+                            <div style={{border : "1px solid black", margin: "4px", "marginLeft" : "5px",
+                            "display" : "inline", "alignItems" : "center", "backgroundColor" : "#f9f9f9",
+                            "borderRadius" : "5px"
+
+                            }}>
+                                <input 
+                                style={{"margin" : "8px"}}
+                                type="checkbox" key={tag} value={count}></input>
+                                <span style={{"marginRight" : "8px"}}>{tag} {count}</span>
+                            </div>
+                        </FilterWrapper>
+                    ))
+    
+                ) : (
+                    Object.entries(projectTagFrequency)
+                    .sort(([, countA], [, countB]) => countB - countA)
+                    .map(([tag, count]) => (
+                        <FilterWrapper>
+                            <div style={{border : "1px solid black", margin: "4px", "marginLeft" : "5px",
+                            "display" : "inline", "alignItems" : "center", "backgroundColor" : "#f9f9f9",
+                            "borderRadius" : "5px"
+
+                            }}>
+                                <input 
+                                style={{"margin" : "8px"}}
+                                type="checkbox" key={tag} value={count}></input>
+                                <span style={{"marginRight" : "8px"}}>{tag} {count}</span>
+                            </div>
+                        </FilterWrapper>
+                    ))
+                )}
+
+            </FilterWrapper>
             <ProjectContainer>
                 {props.isBlogs ? (
                     listOfBlog.map((blog) => (
@@ -329,10 +407,12 @@ const Projects = (props) => {
                         ></ProjectCard>
                     ))
                 )}
-       
+    
             </ProjectContainer>
+
         </ProjectContainerBackground>
     )
+
 }
 
 export default Projects;

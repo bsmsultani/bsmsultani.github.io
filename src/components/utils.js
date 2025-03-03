@@ -93,7 +93,7 @@ This project taught me a lot about AI, APIs, and deployment. But most importantl
         "image_url" : "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTrZ-7WaPN7GaW3pyKsuN81bxqicuqlhxGX0g&s",
         "name" : "Find Anything In A Video",
         "description" : "In this innovative group project we made a fullstack application, allowing users to analyse and search objects in a video.",
-        "tags" : ["JavaScript", "NodeJS", "ExpressJS", "ReactJs", "Google"],
+        "tags" : ["Javascript", "NodeJS", "ExpressJS", "ReactJS", "Google"],
         "markdown" : `# Article in progress.`
         
     },
@@ -171,10 +171,15 @@ then we return \`True\`.
 
     },
     {
-        "tags": [],
-    },
-    {
-        "tags" : []
+        "id" : 2,
+        "image_url" : 'https://assets.leetcode.com/uploads/2020/11/13/rotate1.jpg',
+        "name" : "How to Solve Leetcode Problem: 61 Rotate Linked List",
+        "description" : "",
+        "tags" : ["Leetcode", "Medium"],
+        "haveCarsoul" : false,
+        "markdown" : `
+
+        `
     }
 ]
 
