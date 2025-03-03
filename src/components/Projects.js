@@ -5,7 +5,7 @@ import Markdown from "react-markdown";
 import { useEffect } from "react";
 import { listOfBlog, listOfProject } from './utils.js';
 import { CCarousel, CCarouselCaption, CCarouselItem, CImage } from '@coreui/react'
-import { Link, useParams } from "react-router-dom";
+import { Link, useParams, useNavigate } from "react-router-dom";
 
 
 
@@ -126,9 +126,12 @@ const MyCarousel = () => {
 
             </Carousel.Item>
         </Carousel>
-    );}  
+    );}
+
+
 
 const ProjectCard = ({ id, image_url, name, description, markdown, tags, haveCarousel, htmlFile}) => {
+    const navigate = useNavigate();
 
 
     const [htmlContent, setHtmlContent] = useState(null);
@@ -139,28 +142,21 @@ const ProjectCard = ({ id, image_url, name, description, markdown, tags, haveCar
         .then(response => response.text())  // Convert the response to text (HTML)
         .then(htmlResponse => {
             if (htmlFile) {
-            setHtmlContent(htmlResponse);  // Update state with the resolved HTML content
+            setHtmlContent(htmlResponse);
+
             }
 
         });
-    }, [htmlFile]);  // Empty dependency array, so the effect runs once when the component mounts
+    }, [htmlFile]);
   
 
     // show project article if 
     const [showProjectArticle, setShowProjectArticle] = useState(false);
 
     const handleProjectClick = (data) => {
-
-        // sends out a request and recieves a response
-
-        console.log("clicked")
-        console.log(data)
-        // test
-
-
- 
-        setShowProjectArticle(true);
+        navigate(`/blogs/${id}`)
     }
+    
 
 
     return (
@@ -178,35 +174,6 @@ const ProjectCard = ({ id, image_url, name, description, markdown, tags, haveCar
                 </div>
             </ProjectCardWrapper>
             
-
-            {showProjectArticle && (
-                <div style={{"all" : "unset"}}>
-                    <Overlay></Overlay>
-                    <Popup >
-                        <div>
-                            <RxCross2 style={{"cursor" : "pointer"}} size={32} onClick={()=> setShowProjectArticle(false)}></RxCross2>
-                        </div>
-                        {haveCarousel ? (
-                            <CarouselWithCaptionsExample></CarouselWithCaptionsExample>
-                        ) : 
-                        (
-                            <></>
-                        )}
-
-                        <MarkDownWrapper>
-                            <Markdown>{markdown}</Markdown>
-                            {htmlContent ? (
-                                <div dangerouslySetInnerHTML={{__html: htmlContent}}></div>
-                            ) : (
-                                <></>
-                            )}
-                            
-                        </MarkDownWrapper>
-                    </Popup>
-
-                    
-                </div>
-            )}
         </>
 
     );
@@ -338,10 +305,24 @@ const Projects = (props) => {
     })
 
 
+    const { id } = useParams();
 
+    const [modalContent, setModalContent] = useState();
 
+    useEffect(() => {
+        if (id) {
+            if (props.isBlogs) {
+                const blog = listOfBlog.find(b => b.id.toString() == id);
+                setModalContent(blog);
+            } else {
+                const project = listOfProject.find(p => p.id.toString() == id);
+                setModalContent(project);
+            }
+        }
+        
+        console.log(modalContent);
 
-
+    }, [id, props.isBlogs])
 
 
 
@@ -395,21 +376,50 @@ const Projects = (props) => {
                 {props.isBlogs ? (
                     listOfBlog.map((blog) => (
                         <ProjectCard id={blog.id} image_url={blog.image_url} name={blog.name} description={blog.description} markdown={blog.markdown} tags={blog.tags}
-                        haveCarousel={blog.haveCarousel} htmlFile={blog.htmlFile}
+                            haveCarousel={blog.haveCarousel} htmlFile={blog.htmlFile}
                         ></ProjectCard>
+
                     ))
                     
                 ) : (
                     listOfProject.map((project) => (
                         <ProjectCard id={project.id} image_url={project.image_url} name={project.name} description={project.description} markdown={project.markdown} tags={project.tags}
                         haveCarousel={project.haveCarousel} htmlFile={project.htmlFile}
-
                         ></ProjectCard>
+                        
                     ))
                 )}
     
             </ProjectContainer>
 
+            {modalContent && (
+                <div style={{"all" : "unset"}}>
+                    <Overlay></Overlay>
+                    <Popup >
+                        <div>
+                            <RxCross2 style={{"cursor" : "pointer"}} size={32} onClick={()=> setModalContent("")}></RxCross2>
+                        </div>
+                        {modalContent.haveCarousel ? (
+                            <CarouselWithCaptionsExample></CarouselWithCaptionsExample>
+                        ) : 
+                        (
+                            <></>
+                        )}
+
+                        <MarkDownWrapper>
+                            <Markdown>{modalContent.markdown}</Markdown>
+                            {modalContent.htmlContent ? (
+                                <div dangerouslySetInnerHTML={{__html: modalContent.htmlContent}}></div>
+                            ) : (
+                                <></>
+                            )}
+                            
+                        </MarkDownWrapper>
+                    </Popup>
+
+                    
+                </div>
+            )}
         </ProjectContainerBackground>
     )
 

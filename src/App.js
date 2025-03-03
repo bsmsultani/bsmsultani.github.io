@@ -29,6 +29,7 @@ const Home = () => {
 }
 
 const Blog = () => {
+  
   return (
     <div>
       <NavBar></NavBar>
@@ -51,13 +52,18 @@ const App = () => {
   useEffect(() => {
     localStorage.setItem('url', url)
   }, [])
+
+
+
+  
   
   return (
     <HashRouter>
       <Routes>
         <Route path='/' element={<Home />}></Route>
         <Route path='/blogs' element={<Blog/>}></Route>
-        <Route path='/blogs/:blogNumber' element={<Blog></Blog>}></Route>
+        <Route path='/blogs/:id' element={<Blog></Blog>}></Route>
+        <Route path='/projects/:id'element={<Projects></Projects>}></Route>
         <Route path='/contact' element={<ContactMe/>}></Route>
       </Routes>
     </HashRouter>
