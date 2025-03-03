@@ -94,7 +94,43 @@ This project taught me a lot about AI, APIs, and deployment. But most importantl
         "name" : "Find Anything In A Video",
         "description" : "In this innovative group project we made a fullstack application, allowing users to analyse and search objects in a video.",
         "tags" : ["Javascript", "NodeJS", "ExpressJS", "ReactJS", "Google"],
-        "markdown" : `# Article in progress.`
+        "markdown" : `
+
+# Cloud-Based Video Analysis: Transforming Raw Footage into Insights  
+
+Video content is everywhere, but extracting meaningful insights is challenging. For our CAB432 Cloud Project, we built a scalable video analysis tool that helps users track objects, annotate frames, and analyse patterns efficiently.  
+
+## How It Works  
+
+1. **User Uploads Video** → The web app generates a **unique hash** (a digital fingerprint) for the file and checks **Redis (an in-memory database)** to see if it has been processed before. If not, the app provides a secure **pre-signed URL** for direct upload to **Amazon S3 (cloud storage)**.  
+2. **Processing Pipeline** → Once uploaded, **S3 triggers an event**, adding the video to an **Amazon SQS (queue system)**, which organises tasks and ensures efficient processing.  
+3. **Scalable Processing** → A **fleet of EC2 virtual machines (Auto Scaling Group)** retrieves jobs from the queue. Each instance extracts frames using **FFmpeg (a multimedia processing tool)** and sends them to the **Google Cloud Vision API**, which detects and labels objects in each frame.  
+4. **Data Storage & Retrieval** → Analysed data is stored in **S3 (for long-term storage)** and **Redis (for fast retrieval)**. Users can then **filter, search, and visualise objects** efficiently through the web app.  
+
+## Key Features  
+
+- **Object Visualisation** – Track object appearances on a timeline.  
+- **Frame Annotation** – Extracts and annotates key frames per second.  
+- **Search & Filters** – Navigate timestamps and filter objects based on time.  
+- **Scalability** – Auto Scales based on demand, optimising cost and performance.  
+
+## Challenges & Solutions  
+
+- **Large File Handling** – Prevented crashes by optimising upload and processing.  
+- **SQS Queue Tuning** – Ensured efficient job distribution and execution.  
+
+## Future Enhancements  
+
+- **Facial Recognition & Emotion Analysis** – Adding deeper insights into video content.  
+- **Enhanced Search & Tagging** – Improving content discovery and user experience.  
+
+## Why It Matters  
+
+This project demonstrates expertise in **cloud computing, AI integration, and scalable architecture**, showcasing our ability to build real-world, high-performance applications.  
+
+Interested in learning more? Let’s connect.  
+
+`
         
     },
     {
@@ -105,8 +141,7 @@ This project taught me a lot about AI, APIs, and deployment. But most importantl
         "tags" : ["Linear Regression", "Statistics", "Modelling"],
         "htmlFile": "mxb242-assignment.html"
 
-    }
-
+    },
 
 ]
 
