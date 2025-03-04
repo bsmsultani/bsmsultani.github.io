@@ -314,6 +314,7 @@ const Projects = (props) => {
     const { id } = useParams();
 
     const [modalContent, setModalContent] = useState();
+    const [htmlContent, setHtmlContent] = useState();
 
     useEffect(() => {
         if (id) {
@@ -334,8 +335,8 @@ const Projects = (props) => {
         if (modalContent?.htmlFile) {
             fetch(modalContent.htmlFile)
             .then((response) => response.text())
-            .then((htmlContent) => {
-                modalContent.htmlContent = htmlContent;
+            .then((html) => {
+                setHtmlContent(html);
             })
 
         }
@@ -436,7 +437,7 @@ const Projects = (props) => {
                         <MarkDownWrapper>
                             <Markdown>{modalContent.markdown}</Markdown>
                             {modalContent.htmlFile ? (
-                                <div dangerouslySetInnerHTML={{__html: modalContent.htmlContent}}></div>
+                                <div dangerouslySetInnerHTML={{__html: htmlContent}}></div>
                             ) : (
                                 <></>
                             )}
