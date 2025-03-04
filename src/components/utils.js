@@ -213,6 +213,103 @@ then we return \`True\`.
         "tags" : ["Leetcode", "Medium"],
         "haveCarsoul" : false,
         "markdown" : `
+## The Problem
+
+You are given the \`head\` of \`linked list\` and you need to rotate the list to the right by \`k\` places.
+
+## My initial thought
+
+- Shift elements from the begining of the list to the end by \`k\`
+- Shift elements from the end of the list to the begining of the list by \`k\`
+
+Okay this seems pretty straightforward, but how do we achieve this?
+
+### Possible Solution 1
+
+One of my immediate solution was that perhaps we can link elements that come after \`n - k \` elements to the begining.
+And we have solved the problem. 
+
+[1, 2, 3, 4] , k = 2
+
+[1, 2, 3, 4] → [4, 1, 2, 3] → [3, 4, 1, 2]
+
+
+However, what happens when \`k\` is larger the length of the list (\`n\` = 4):
+
+k = 5
+
+[1, 2, 3, 4] → [4, 1, 2, 3] → [3, 4, 1, 2] → [2, 3, 4, 1] → [1, 2, 3, 4] → [4, 1, 2, 3]
+
+This is the same as when k = 1.
+
+So when \`k > n\` we can normalise \`k\` by \`k % n\`.
+
+But the problem is we don't know the length of the list before hand, since this is a \`linked list\`. We also don't want a solution that
+iteratively shifts elements \`k\` times without normalising \`k\` as this would be inefficient.
+
+Therfore we use two pointers. The first pointer will go all the way to the end of the list, once reached, we will know
+the length of the list. The second pointer will then go normalised \`k\` places.
+
+
+The hardest part of implementing this solution was considering the different test cases:
+
+\`\`\`
+
+class Solution:
+    def rotateRight(self, head: Optional[ListNode], k: int) -> Optional[ListNode]:
+
+        if not head:
+            return
+        
+        # at least one node avaliable
+        n = 1
+        p1 = head
+        while p1.next:
+            n += 1
+            p1 = p1.next
+        
+        if n == 1:
+            return head
+            
+        
+        # normalising k
+        if k > n:
+            k = k % n
+            
+        # case where we shift elements to their original spot
+        if n == k:
+            return head
+        
+        if k == 0:
+            return head
+        
+        # p2 goes to the new last element
+        p2 = head
+        for _ in range(n - k - 1):
+            p2 = p2.next
+            
+        
+        # the new head
+        newHead = p2.next
+
+        # the last element cuts connection 
+        p2.next = None
+        
+        p1.next = head
+        
+        return newHead
+
+
+### Results
+232/232 cases passed (0 ms)
+Your runtime beats 100 % of python3 submissions
+Your memory usage beats 85.66 % of python3 submissions (17.8 MB)
+
+\`\`\`
+
+
+Although this solution was easy to implement, the hardest part was considering the edge cases.
+
 
         `
     }
