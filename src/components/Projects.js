@@ -326,10 +326,22 @@ const Projects = (props) => {
             }
         }
         
-        console.log(modalContent);
 
     }, [id, props.isBlogs])
 
+
+    useEffect(() => {
+        if (modalContent?.htmlFile) {
+            fetch(modalContent.htmlFile)
+            .then((response) => response.text())
+            .then((htmlContent) => {
+                modalContent.htmlContent = htmlContent;
+            })
+
+        }
+
+
+    }, [modalContent])
 
 
     return(
@@ -423,7 +435,7 @@ const Projects = (props) => {
 
                         <MarkDownWrapper>
                             <Markdown>{modalContent.markdown}</Markdown>
-                            {modalContent.htmlContent ? (
+                            {modalContent.htmlFile ? (
                                 <div dangerouslySetInnerHTML={{__html: modalContent.htmlContent}}></div>
                             ) : (
                                 <></>
