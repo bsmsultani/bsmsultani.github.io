@@ -312,7 +312,171 @@ Although this solution was easy to implement, the hardest part was considering t
 
 
         `
+    },
+    {
+        "id" : 3,
+        "image_url" : "https://miro.medium.com/v2/resize:fit:918/1*PPjYMxD1X2qzK2HU8FE3hg.png",
+        "name" : "How To Solve Leetcode Problem: 62 Unique Path",
+        "description" : "",
+        "tags" : ["Leetcode", "Medium"],
+        "haveCarsoul" : false,
+        "markdown" : `
+## The problem
+
+- The robot is on \`m x n\` grid
+- Initially the robot starts at \`grid[0][0]\`
+- The robot tries to move to the bottom right corner. Given \`m x n\` grid, return the possible unique paths the robot can take to
+reach the bottom right corner
+
+
+**Constraints**
+
+- The robot can only move down or right at any given point.
+
+## My Initial Thoughts
+
+I cannot think of a algorithmic solution to this problem. Perhaps it involves maths? But I can't think of a mathmatical solution.
+
+Lets stick to algorithmic solution for now.
+
+Actually after some thought there might be an algorithmic solution. Perhaps recursion.
+
+- At each step we recursively move \`n - 1 \` or \`m - 1\` until we reach our goal state \`[m - 1][n - 1]\`. This should explore all the possibilites
+algorithmically.
+
+### Possible Solution 1
+
+Lets say we have a space a \`3  by 3\` space:
+
+[0, 0][0, 1][0, 2]\n
+[1, 0][1, 1][1, 2]\n
+[2, 0][2, 1][2, 2]\n
+
+[0, 0] → [0, 1] [1, 0]\n
+[0, 1] → [0, 2] [1, 1]\n
+[0, 2] → [1, 2] (Edge case: Right is not possible to go, so we only move down)
+
+
+My first coded solution can be seen below. It WORKS!!! However time complexity is too large O(2^(m + n)).
+
+
+\`\`\`
+class Solution:
+    def uniquePaths(self, m: int, n: int) -> int:
+        
+        n_paths = 0
+        def unique_paths(k, j):
+            nonlocal n_paths
+            # if we've reached the goal state increase number of ways by 1
+            if k == m - 1 and j == n - 1:
+                n_paths += 1
+                return
+
+            
+
+            # move down as long as k < m
+            if k < m:
+                unique_paths(k + 1, j)
+            
+            # move right as long as j < n
+            if j < n:
+                unique_paths(k, j + 1)
+            
+        
+        unique_paths(0, 0)
+        return n_paths
+
+
+\`\`\`
+
+### Possible Solution 2
+
+Okay this may be cheating but the proble is tagged with \`dynamic programming \`
+
+I don't know much about dynamic programming but I know that sub-problems are used to solve the problem.
+
+I guess first we need to figure out how to divide the problem into sub-problems. Figuring out the sub-problem
+wasn't very straightforward. But CHATGPT gave me a hint.
+
+**The Hint**
+
+The number of ways to reach D[j, k] cell is the SUM of D[j - 1, k] and D[j, k -1]
+
+Okay this is my coded solution. However something is wrong with it.
+
+\`\`\`
+
+    def solution_2(self, m, n):
+        
+        # DP table
+        dp = [[0] * n] * m
+        
+        dp[0][0] = 1
+        
+        for i in range(m):
+            for j in range(n):
+                if dp[i - 1][j]:
+                    dp[i][j] += dp[i - 1][j] 
+                
+                if dp[i][j - 1]:
+                    dp[i][j] += dp[i][j - 1]
+        
+        
+        return dp[m - 1][n - 1]
+
+\`\`\`
+
+
+After some investigation, what I found was wrong with it and it is astonishing! Two things.
+
+- First the way \`dp\` table is being initialised. In python when we use \`*\` to list, it creates reference to the list.
+- Second, I need to ensure \`i > 0 and j > 0\`
+
+
+\`\`\`
+
+    def solution_2(self, m, n):
+        
+        # DP table
+        dp = [[0] * n for _ in range(m)]
+
+        
+        dp[0][0] = 1
+        
+        for i in range(m):
+            for j in range(n):
+                if i > 0 and dp[i - 1][j]:
+                    dp[i][j] += dp[i - 1][j] 
+                
+                if j > 0 and dp[i][j - 1]:
+                    dp[i][j] += dp[i][j - 1]
+        
+        
+        return dp[m - 1][n - 1]
+
+
+
+\`\`\`
+
+**Great this solution WORKS. With overall time complexity of O(m + n)**
+
+
+
+### What did I learn?
+
+This problem took me **1.5 hours** to complete and write this article at the same time. It was so much fun as well and
+allowed me to sharpen my problem solving skills, while also learning few things:
+
+- Initialising multi-dimensiional arrays in python CORRECTLY
+- Testing for edge cases.
+- Dynamic programming
+
+        `
+
+
+        
     }
+
 ]
 
 
