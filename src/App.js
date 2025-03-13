@@ -7,6 +7,8 @@ import Roadmap from './components/Roadmap.js'
 import Projects from './components/Projects.js';
 import Footer from './components/Footer.js';
 import '@coreui/coreui/dist/css/coreui.min.css'
+import Authentication from './components/Auth.js';
+import ContactMe from './components/Contact.js';
 
 import './App.css';
 
@@ -38,10 +40,22 @@ const Blog = () => {
   )
 }
 
-const ContactMe = () => {
+const Contact = () => {
   return (
     <div>
       <NavBar></NavBar>
+      <ContactMe></ContactMe>
+      <Footer></Footer>
+    </div>
+  )
+}
+
+const Login = () => {
+  return (
+    <div>
+      <NavBar></NavBar>
+      <Authentication></Authentication>
+      <Footer></Footer>
     </div>
   )
 }
@@ -64,7 +78,8 @@ const App = () => {
         <Route path='/blogs' element={<Blog/>}></Route>
         <Route path='/blogs/:id' element={<Blog></Blog>}></Route>
         <Route path='/projects/:id'element={<Home />}></Route>
-        <Route path='/contact' element={<ContactMe/>}></Route>
+        <Route path='/contact' element={<Contact/>}></Route>
+        <Route path='/login' element={<Login></Login>}></Route>
       </Routes>
     </HashRouter>
 )};

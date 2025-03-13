@@ -53,8 +53,7 @@ const NavBar = () => {
             <NavBarButton as={Link} to="/">Home</NavBarButton>
             <NavBarButton as={Link} to="/blogs">Blogs</NavBarButton>
             <NavBarButton as={Link} to="/contact">Contact Me</NavBarButton>
-            
-            <NavBarButton>Login</NavBarButton>
+            <NavBarButton as={Link} to="/login">Login</NavBarButton>
         </NavBarContainer>
     );
 };

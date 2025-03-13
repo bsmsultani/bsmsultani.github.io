@@ -6,7 +6,7 @@ export const listOfProject = [
         "image_url" : "https://miro.medium.com/v2/resize:fit:1400/format:webp/1*H6L8M2_Gd2KL94FZ_F5Bog.png",
         "name" : "Generate Stories With AI",
         "description" : "This is a story of how I brought AI-Powered storytelling to life!",
-        "tags" : ["Javascript", "S3", "ReactJs", "Docker", "OpenAI", "Google"],
+        "tags" : ["Javascript", "S3", "ReactJS", "Docker", "OpenAI", "Google"],
         "markdown" : `
 
 ### The story of "StoryTellerGenie": How I Brought AI-Powered Storytelling to Life
@@ -31,7 +31,7 @@ To bring this vision to life, I used a mix of cutting-edge technologies:
 ##### Building the Client-Side
 
 I started with the client-side, built using React.js. This part handles user interactions and sends API requests to the server. It is pretty straight forward,
-with two main components:
+with three main components:
 
 - **Search Bar**: The user can input prompts like 'generate a story of a cat riding a donkey'.
 ![Search Bar Image](${"/projects/generate_story_1.png"})
@@ -53,15 +53,6 @@ The server-side, implemented with Express.js, is where the magic happens. It pro
 To ensure the app runs smoothly across different environments, I used Docker. The Dockerfile sets up a Node.js runtime, installs necessary packages, and defines how the app starts. This made deployment a breeze!
 ![Generated story in French](${"/projects/generate_story_4.png"})
 
-#### Challenges and Triumphs
-
-##### Learning Curve
-
-One of the biggest hurdles was mastering advanced JavaScript and working with APIs like OpenAI and Google's services. But with lots of practice and online resources, I got the hang of it.
-
-##### Debugging
-
-As the app grew more complex, debugging became a challenge. Breaking down the code into smaller parts and using debugging tools helped me identify and fix issues.
 
 ##### Unfinished Features
 
@@ -96,35 +87,51 @@ This project taught me a lot about AI, APIs, and deployment. But most importantl
         "tags" : ["Javascript", "NodeJS", "ExpressJS", "ReactJS", "Google"],
         "markdown" : `
 
-# Cloud-Based Video Analysis: Transforming Raw Footage into Insights  
+### Cloud-Based Video Analysis: Transforming Raw Footage into Insights  
 
 Video content is everywhere, but extracting meaningful insights is challenging. For our CAB432 Cloud Project, we built a scalable video analysis tool that helps users track objects, annotate frames, and analyse patterns efficiently.  
 
-## How It Works  
+#### How It Works  
 
 1. **User Uploads Video** → The web app generates a **unique hash** (a digital fingerprint) for the file and checks **Redis (an in-memory database)** to see if it has been processed before. If not, the app provides a secure **pre-signed URL** for direct upload to **Amazon S3 (cloud storage)**.  
 2. **Processing Pipeline** → Once uploaded, **S3 triggers an event**, adding the video to an **Amazon SQS (queue system)**, which organises tasks and ensures efficient processing.  
 3. **Scalable Processing** → A **fleet of EC2 virtual machines (Auto Scaling Group)** retrieves jobs from the queue. Each instance extracts frames using **FFmpeg (a multimedia processing tool)** and sends them to the **Google Cloud Vision API**, which detects and labels objects in each frame.  
 4. **Data Storage & Retrieval** → Analysed data is stored in **S3 (for long-term storage)** and **Redis (for fast retrieval)**. Users can then **filter, search, and visualise objects** efficiently through the web app.  
 
-## Key Features  
+#### The Client Side
+
+1. The user uploads a video
+
+![Upload Video](${"/projects/video_analysis_1.png"})
+![Upload Video](${"/projects/video_analysis_0.png"})
+
+2. After the video has been processed, the video is then displayed back with its top objects
+detected on a graph and also there is a search feature, if the user wants to see exactly
+where an object appears in the video across the timeline; they can make use of this search
+button.
+![Search for object graph](${"/projects/video_analysis_2.png"})
+
+3. Further down it also shows the top n frequencies of objects in a the video
+![Top N frequencies](${"/projects/video_analysis_3.png"})
+
+#### Key Features  
 
 - **Object Visualisation** – Track object appearances on a timeline.  
 - **Frame Annotation** – Extracts and annotates key frames per second.  
 - **Search & Filters** – Navigate timestamps and filter objects based on time.  
 - **Scalability** – Auto Scales based on demand, optimising cost and performance.  
 
-## Challenges & Solutions  
+#### Challenges & Solutions  
 
 - **Large File Handling** – Prevented crashes by optimising upload and processing.  
 - **SQS Queue Tuning** – Ensured efficient job distribution and execution.  
 
-## Future Enhancements  
+#### Future Enhancements  
 
 - **Facial Recognition & Emotion Analysis** – Adding deeper insights into video content.  
 - **Enhanced Search & Tagging** – Improving content discovery and user experience.  
 
-## Why It Matters  
+#### Why It Matters  
 
 This project demonstrates expertise in **cloud computing, AI integration, and scalable architecture**, showcasing our ability to build real-world, high-performance applications.  
 
@@ -138,10 +145,42 @@ Interested in learning more? Let’s connect.
         "image_url" : "https://diamondvision.com/wp-content/uploads/2019/07/Dilated-Pupils-800x533-1.jpg",
         "name" : "How I Uncovered the Effects of Coffee on Human Performance",
         "description" : "In this group project, we collected reaction times, and fitted a linear model to determine if it effects reaction time.",
-        "tags" : ["Linear Regression", "Statistics", "Modelling"],
+        "tags" : ["Linear Regression", "Statistics", "Modelling", "Visualisation"],
         "htmlFile": "mxb242-assignment.html"
 
     },
+    {
+        "id" : 5,
+        "image_url" : "https://sunstateconveyancing.com.au/wp-content/uploads/2023/07/buying-real-estate-at-auction.jpg",
+        "name" : "How I Made a Full Auction Software in C#",
+        "description" : "",
+        "tags" : ["OOP", "C#"],
+        "markdown" : `
+# Article in Progress
+        `
+    },
+    {
+        "id" : 6,
+        "image_url" : "https://www.nvidia.com/content/dam/en-zz/Solutions/high-performance-computing/hpcandai/nvidia-simnet-closeup-2c50-p@2x.jpg",
+        "name" : "How I Made An Application 1000x faster",
+        "description" : "",
+        'tags' : ["Parallel Computing", "Cuda", "C++"],
+        "markdown" : `
+        
+        `
+
+
+    },
+    {
+        "id" : 7,
+        "image_url" : "https://d12aarmt01l54a.cloudfront.net/cms/images/UserMedia-20220826182039/808-440.png",
+        "name" : "Segmenting Drone Image using Deep Learning Methods",
+        "description" : "",
+        "tags" : ["Deep Learning", "Segmentation"],
+        "markdown" : `
+        
+        `
+    }
 
 ]
 
@@ -476,7 +515,7 @@ allowed me to sharpen my problem solving skills, while also learning few things:
         
     },
     {
-        "id" : "4",
+        "id" : 4,
         "image_url" : "https://surveypal.com/wp-content/uploads/2023/05/text-analysis-1024x538.png",
         "name" : "How to Analyse Textual Information",
         "tags" : ["LLMs", "Text Analysis", "Machine Learning"],
@@ -545,7 +584,7 @@ Stemming reduces words to their root forms, addressing plural forms and tenses:
 #### 3. N-grams
 Many queries are phrases, typically consisting of two or more words. When processing these queries, we need to decide:
 - Do we match both words together (a phrase), or do we match just one word?
-
+- This method moves n-window at a time
 
 #### Methods for Extracting Phrases
 
@@ -566,12 +605,108 @@ This step involves using the documents to create a set of indices. This indices 
 
 **Type of Index**
 
-- Inverted index : Maps each term to a list of documents that contain that term. {"fox" : ["doc1", "doc2"]}
+- ***Inverted index:*** Maps each term to a list of documents that contain that term. {"fox" : ["doc1", "doc2"]}
+
+
+
+
+--- 
+
+## Issues with Search Engine Technology
+
+- Dynamic data: The web is changing all the time, serving the freshest data is crucial
+- Scalability: Large user base, narrowing the search is crucial
+- Adaptability: Changing and tuning search engine components such as ranking algorithm & indexing strategy
+
+---
+
+## Things you can do with text analysis
+- Text classification
+- Important words extraction
+- Spelling check & Auto completion
+- Recommender Systems
+
+
+
+---
+
+## Information Extraction
+
+- automatically extracting useful information from a set of documents such as name, address etc.
+- **Semantic Annotation**: tagging words in text with tags <Name>Fred</Name>
+
+
+### Approaches to named entities
+
+- Ruled based: uses known phrases such as list of words to recognise named entities
+
+- **Statistical Approaches:** ***Hiden Markov Model***, uses probablistic model of words in and around the named entity
+    - Resolves ambiguity (e.g. person name or city name) by using context (around the word) 
+    - accurate recongition requires about 1 million words for training data
+    - useful YouTube video: [https://www.youtube.com/watch?v=fX5bYmnHqqE](https://www.youtube.com/watch?v=fX5bYmnHqqE)
+
+---
+
+## Document Structure Mark up
+
+Some mark up elements are more important than others:
+
+- Headers
+- Anchor text
+- Alternative text
 
 
 
         `
-         
+    },
+
+    {
+        "id" : 5,
+        "name" : "Functional vs Imperative Programming",
+        "image_url" : "https://www.boardinfinity.com/blog/content/images/2023/03/Programming-Paradigms.png",
+        "description" : "An indepth article exploring functional and imperative programming",
+        "tags" : ["Programming Style"],
+        "markdown" : `
+
+# Introduction
+
+Programming paradiagm is a style or approach to programming. It tells programmers how to organise their code. And there is
+largely two types of paradiagms:
+
+***Imperative Programming***: a style of programming where the programmer tells the computer to execute one statement at a time
+that can change the state of the program.
+
+***Functional Programming***: a style of programming where the series of nested functions execute to achieve an outcome.
+
+---
+
+# F# 
+
+To dive deeper into the functional world of programming, lets learn F#, a multi-paradiagm programming language part of dotnet.
+It is compiled into Microsoft Commmon Language (.dll), which is ran on the desired hardware using Just In Time Compilation.
+
+
+### Basics
+
+- A strongly typed language
+- A value can be bined to a name. This is not the same as a variable
+- Defining functions: \`let add x y = x + y\` is a function that takes two parameters and return their sum. To call function \`add 2 4\`
+we can call function three ways. \`Prefix: add 2 4\`, \`infix 2 add 4\` or \`(+) 2 4\`
+- ***Nested Binding:*** defining multiple heirarchial variables such as 
+
+        let outer = 
+            let inner = 10
+            inner + 5
+        
+        outer
+
+        The result would be 15.
+- ***Function:*** is a value like a number. That means it can be assigned a name, passed as parameters and returned as a result of a function call.
+Therefore functions also need a type.
+
+        
+
+        `
 
     }
 
