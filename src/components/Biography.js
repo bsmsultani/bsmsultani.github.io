@@ -30,7 +30,7 @@ const Biography = () => {
                 <h1>Hello Friends!</h1>
                 <p>
                     My name is Bismillah, Millah for short! I am an Entrepreneur, a Data Scientist, and a Software Developer.
-                    I love programming, AI and data and my dream is to build my own start up! On my free time, I like to read,
+                    I love programming, AI and data. On my free time I like to read,
                     go to the gym, hike and code! I love meeting new people, you can reach out to me via my socials:
                 </p>
                 <a href='https://www.linkedin.com/in/bsmsultani/' target='_blank'>

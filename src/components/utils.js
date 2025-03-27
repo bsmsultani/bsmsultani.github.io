@@ -133,7 +133,7 @@ button.
 
 #### Why It Matters  
 
-This project demonstrates expertise in **cloud computing, AI integration, and scalable architecture**, showcasing our ability to build real-world, high-performance applications.  
+This project demonstrates expertise in **cloud computing, AI integration, and scalable architecture**, showcasing my ability to build real-world, high-performance applications.  
 
 Interested in learning more? Let’s connect.  
 
@@ -146,17 +146,72 @@ Interested in learning more? Let’s connect.
         "name" : "How I Uncovered the Effects of Coffee on Human Performance",
         "description" : "In this group project, we collected reaction times, and fitted a linear model to determine if it effects reaction time.",
         "tags" : ["Linear Regression", "Statistics", "Modelling", "Visualisation"],
-        "htmlFile": "mxb242-assignment.html"
+        "htmlFile": "mxb242-assignment.html",
+        "markdown" : `
+
+        `
 
     },
     {
         "id" : 5,
         "image_url" : "https://sunstateconveyancing.com.au/wp-content/uploads/2023/07/buying-real-estate-at-auction.jpg",
         "name" : "How I Made a Full Auction Software in C#",
-        "description" : "",
+        "description" : "In this OOP uni project, I made a C# auction software allwoing users to advertise products, bid advertised products and accept bids while also ensuring data integrity.",
         "tags" : ["OOP", "C#"],
         "markdown" : `
-# Article in Progress
+
+
+### How I built it?
+This project was honestly very complex, I mean from user registeration, login-in and advertising products and accepting the highest bid, it
+wasn't easy, but dare I say very cool and I learned how to harness the power Object Oriented Design. I mean just look at the UML diagram below, it is
+massive. But don't worry we will break it down.
+
+![complete UML diagram](${"/projects/auction_house_1.png"})
+
+### 1 Building the user interface
+Building the UI was challenging as it required flexible menu system that could adapt to different user states and actions. For example
+if the user wasn't signed it, it would've shown a menu to register, sign in or exit. If the user was siged in, it would've show
+list of products etc..
+
+![UML diagram of the UI](${"/projects/auction_house_2.png"})
+
+##### 1.1 The basics
+
+I started by sketching out what I needed: menus that could display different options based on whether a user was logged in or not, buttons that would trigger specific actions, and a way to handle user input that felt natural in a console environment. I knew I needed something reusable but customisable.
+
+So I began with the abstract Menu class. This would be the backbone of every menu in the system. It would have a title, a collection of buttons, and methods to start and stop displaying. By making it abstract, I could ensure every concrete menu would implement the necessary display logic while adding its own unique features.
+
+##### 1.2 Making Menus
+
+From there, I created the MainMenu and ClientMenu classes. The MainMenu would be the welcoming face of the application, offering options for registration, sign-in, and exit. The ClientMenu would appear after successful authentication, presenting options specific to authenticated users.
+
+I remember implementing the Configure() method in each menu to set up their unique buttons and events. This allowed each menu to initialise itself with the appropriate options without tight coupling to other parts of the system.
+
+##### 1.3 Buttons
+Buttons were next. Each button needed to display text and trigger an action when pressed. I created the Button class with properties for text and an event trigger. The PressButton() method would execute the linked event, creating the interaction between user input and system response.
+
+##### 1.4 Button Events
+To make buttons truly flexible, I implemented the IEvent interface. This allowed different types of actions (like registration, sign-in, or searching for products) to be triggered uniformly. By decoupling buttons from their specific actions, I could change or add functionality without rewriting UI components.
+
+Below you can see events like registeration, sign-in and exit...
+
+![Upload Video](${"/projects/auction_house_4.png"})
+
+Events like search for products and log out.
+
+![Searching for products](${"/projects/auction_house_5.png"})
+
+
+##### 1.5 Handling User Input
+Input handling was tricky. I needed a system that could prompt users for information, validate their responses, and handle errors gracefully. This led to the creation of the abstract ConsoleInput class and its concrete implementation, SelectOptions.
+SelectOptions became crucial for managing user selections. It could validate input against expected values, display appropriate prompts, and handle invalid entries with clear error messages. This made the UI feel responsive and user-friendly even in a console environment.
+
+![Upload Video](${"/projects/auction_house_3.png"})
+
+
+
+
+
         `
     },
     {
@@ -166,7 +221,7 @@ Interested in learning more? Let’s connect.
         "description" : "",
         'tags' : ["Parallel Computing", "Cuda", "C++"],
         "markdown" : `
-        
+# Article in progress
         `
 
 
@@ -176,10 +231,20 @@ Interested in learning more? Let’s connect.
         "image_url" : "https://d12aarmt01l54a.cloudfront.net/cms/images/UserMedia-20220826182039/808-440.png",
         "name" : "Segmenting Drone Image using Deep Learning Methods",
         "description" : "",
-        "tags" : ["Deep Learning", "Segmentation"],
+        "tags" : ["Deep Learning", "Segmentation", "Image"],
         "markdown" : `
-        
+# Article in progress
         `
+    },
+    {
+        "id" : 8,
+        "image_url" : "https://miro.medium.com/v2/resize:fit:1400/0*QgO58OBJUzpPAM6Q",
+        "name" : "Bird sound detection using Deep Learning",
+        "tags" : ["Deep Learning", "Detection", "Audio"],
+        "markdown" : `
+# Article in progress
+        
+`
     }
 
 ]
@@ -665,7 +730,7 @@ Some mark up elements are more important than others:
         "name" : "Functional vs Imperative Programming",
         "image_url" : "https://www.boardinfinity.com/blog/content/images/2023/03/Programming-Paradigms.png",
         "description" : "An indepth article exploring functional and imperative programming",
-        "tags" : ["Programming Style"],
+        "tags" : ["Programming Style", "F#"],
         "markdown" : `
 
 # Introduction
@@ -704,10 +769,447 @@ we can call function three ways. \`Prefix: add 2 4\`, \`infix 2 add 4\` or \`(+)
 - ***Function:*** is a value like a number. That means it can be assigned a name, passed as parameters and returned as a result of a function call.
 Therefore functions also need a type.
 
+
+- ***Lists***: an immutable data container
+
+    create a list
+
+        let myList = [1;2;3]
+        let x = myList.[2]
+
+    add list tail
+
+        let secondList = 5::myList
+
+    concat list 
         
+        let thirdList = myList @ [4;5;6]
+
+- ***Match Statement***: equivalent to switch statement in Javascript, C# etc.
+
+        match [something] with
+            pattern1 -> expression1
+            pattern2 -> expression2
+
+
+        let lucky x = match x with
+            1 -> true
+            2 -> false
+            _ -> false (matches anything)
+
+
+- ***Recursion with List***
+
+        The head and tail are just names and :: is used to r
+
+
+        let rec length L =
+            match L with
+                [] -> 0
+                head::tail -> 1 + (length tail)
+        
+
+        let rec range lower upper =
+            if lower <= upper then lower :: (range (lower + 1) upper)
+            else []
+
+
+- ***Higher Order List Functions***
+
+    Map
+        let rec map f L =
+            match L with
+                [] -> []
+                head::tail -> (f head) :: (map f tail)
+        
+        the above is equivalent to:
+
+        List.map( func x -> x * 2 )[0 .. 10]
+
+    Reduce : takes multiple values and reduces them into a a single value
+        
+        let rec reeduce op L =
+            match L with
+                [] -> raise(System.ArgumentException("The Input List is Empty"))
+                [head] -> head
+                head::tail -> op head (reduce op tail)
+
+        List.reduce(+)[1 .. 10]
+
+
+    Filter
+
+        let rec filter p L =
+            match L with
+                [] -> []
+                head::tail ->
+                    let rest = filter p tail
+                    if (p head) return (head::rest) else rest
+
+
+        List.filter prime [1 .. 100]
+
+
+- ***Composing Higher Order Functions***
+
+        We apply map function first then pass the elements and apply the reduce operation second.
+        We can also run the map function in parallel.
+
+        let mapreduce m r = (List.map m) >> (List.reduce r)
+        mapreduce (fun x -> x * 2) (+) [0..100]
+        
+
+- ***Pipline Style***
+
+        x |> y is equivalent to y(x(.))
+
+- ***Static vs Dynamic Typing***
+
+        parameters can optionally have a type
+
+- ***Tuple and record types***
+
+        a pair : (4, "fred") which is a type of int * string
+
+        can use match with tuples
+
+        let length vector = 
+            match vector with
+                (x, y) -> sqrt(float (x * x + y * y))
+
+- ***Records***
+
+        similar to tuples but with values having names assigned
+
+        Must declare the type first.
+
+        type foo { x : int, y : string }
+        let r = {y = "hello", x = 1}
+        let z = r.x
+
+
+- ***Unions Types***
+
+        The simplest form is enumeration
+
+        type Suite = Spades | Clubs | Diamonds | Hearts
+        
+        type Shape = 
+            | Rectangle of width:float * height:float
+            | Circle of radius:float
+            | Prism of width:float * float * height:float
+
+        
+        let rec = Rectangle (height = 1.3, width = 10.0)
+
+
+        We can treat types like virtual method (in OOP).
+
+        We can create methods that will execute differently based on the shape given:
+
+        let getShapeHeight shape = 
+            match Shape with
+            |   Rectangle (height = h) -> h
+            |   Circle (height = r) -> 2 * r
+            |   Prism (height = h) -> h
+
+
+
+
+        type Tree =
+            |   leaf of value:int
+            |   Parenf of value:int * left:Tree * right:Tree
+
+
+        let rec Height tree =
+            match tree with
+            |   Leaf(_) -> 1
+            |   Parent (value = v, left = l, right = r) -> (max (Height l) (Height r)) + 1
+
+- ***Generic Type***
+
+        Generic functions or types enables you to write code that works with variety of types.
+
+        let twice f x = f (f x)
+
+        the type for this is inferred to be:
+
+        f:('a -> 'a) -> x: a' -> a' 
+
+        The resultant type has to be the same as the input type in this generic function.
+
+        You can also create your own generic type:
+
+        type List<'t> =
+            |   Empty
+            |   NonEmpty(head: 't; tail:List<'t>)
+
+
+- ***The builtin Option Type***
+
+        type Option<'t>
+            | some 't
+            | None
+
+        The result of any method that returns either some type of None - the result is an Option type.
+
+    
+        ('a -> 'b) -> 'a : list -> 'b : list
+
+        - ('a -> 'b) : takes a returns b
+        - 'a : list means a is a type of list
+        - 'b : list means b is a type of list
+        
+
+
+- ***Lazy Evaluation***
+
+    Evaluation of expressions play a vital role in differentiating functional vs imperative programming. There are two types:
+
+    - Lazy: a concept where an expression is evaluated only when needed
+    - Eager: opposite of lazy, expressions are computed no matter what.
+
+
+    Consider the case below:
+
+        if (a != null && a->field > 0) 
+        if (a != null || a-> field > 0)
+
+        In the first case, the right hand side will not be evaluated if a is null. So this is lazy evaluation.
+
+    It is worth to consider that F# is not a fully functional programming language.
+
+    There are elements of F# that are lazy, lets explore them:
+
+
+- ***Sequences (Interface)***
+
+    - A series of elements all one type
+    - Sequences are represented by Seq<'T> which is alias for IEnumberable<T> type
+    - If you create a function that expects a sequence, it can be passed any .NET type that implements 
+    INumberable (list, dictionary etc..) making it reusable
+    - The values are not stored, we can enumerate them in sequence
+
+- ***.NET IEnumerable***
+
+        You can create a sequence using this interface. For example:
+
+
+        public namespace Collections.Generic
+        {
+
+            public interface IEnumberable<T>
+
+            {
+                IEnumerator<T> GetENumerator()
+            }
+
+            public interface IEnumerator<T> {
+
+                T current { get; }
+                bool MoveNext();
+                void Reset();
+                void Dispose();
+            
+            }
+        
+        }
+
+
+        public class Tree
+        {
+            private string label;
+            private Tree left, right;
+
+            public IEnumberable<Tree> Preorder()
+            {
+                yield return this;
+                if (left != null) {
+                    foreach(Tree node in left.Preorder()) {
+                        yeild return node;
+                    }
+                }
+                if (right != null) {
+                    foreach(Tree node in right.Preorder()) {
+                        yeild return node;
+                    }
+                }
+            }
+        }
+
+
+        // note when for loop is happening
+        // in behind the scene IEnumerable.GetEnumerator() is being called
+        // this lazyly lodes the next value
+
+
+        static Main()
+        {
+            IEnumerable<Tree> nodes = root.Preorder();
+            for (var node in nodes) {
+                Console.writeLine(node);
+            }
+        }
+
+
+- *** Object-Oriented Programming in F# ***
+
+        The most common use case for creating objects in F# is to interoperate with code written in other .NET languages
+
+        type Coordinate(x, y) =
+            member this.x = x
+            member this.y = y
+            override this.ToString() = "(" + x.ToString() + ", " + y.ToString() + ")"
+            member this.Add (other:Coordinate) = new Coordinate(x + other.x, y + other.y)
+
+    
+
+
+- *** Imperative Programming in F# ***
+
+        Making mutable variables:
+
+        let mutable x = 1
+        x <- x + 1
+
+        let a = ref 5
+        let b = !a (get the value of the reference)
+        let c = a (same reference)
+        c:= 10 change the value to 10
+
+
+- *** Array ***
+
+        Similar to lists but mutable
+        let a = [|1; 2; 3; 4; 5|]
+
+        Lists are more liked linked list and doesn't have efficient random memory access
+        While Arrays have efficient random access and are more like arrays in python
+
+        In arrays we cannot do pattern matching head::tail 
+
+        Accessing element of an array:
+
+        let element = a.[i]
+
+
+- *** Map ***
+
+        let rec hashlist f L = 
+            match L with
+            |   [] -> Map.empty
+            |   head::tail -> Map.add head (f head) (hashlist tail)
+
+
+- *** Unit Type ***
+
+        Everything in F# must have a type.
+
+        For expressions that do not have a type, the type \`unit\` is used. The value of the type \`()\`
+
+- **** Imperative Control Flow ***
+
+        while expr do
+            body
+
+        for i in expr
+            body
+
+        or i = expr to expr do
+            body
+
+        # avoid using imperative control flow when learning functional programming
+
+        How to avoid using loops:
+
+            for i = 1 to 10
+                printf "%d" i
+
+            can be transformed to
+
+            [1 .. 10] |> List.iter (printf "%i")
+
+        
+            let mutable i = 0
+            while i * i < 100 do
+                printf "%i"i i
+                i <- i + 2
+            
+            Seq.initInfinite((*) 2)
+                |> Seq.takeWhile(fun i -> i * i < 100)
+                |> Seq.iter (printf "%i" i)
+
+- *** Iter Function ***
+
+        y |> List.iter (printf "%d; ")
+        
+
+
+        
+
+
+
+
+
+
+
+
 
         `
 
+    },
+    {
+        "id" : 6,
+        "image_url" : "https://wallpapercat.com/w/full/8/8/e/1324311-2000x2000-phone-hd-math-wallpaper-image.jpg",
+        "name" : "Generalised Linear Models (GLMs)",
+        "description": "An exploration of GLMs - a form of linear regression for non-linear relationship.",
+        "tags" : ["Modelling", "Linear Regression", "GLM"],
+        "markdown" : `
+
+### Introduction
+
+You maybe familar with linear regression which models a linear relationship between \`Y\` and \`X\`. However this assumption of linearity is
+sometimes is violated. **What to do then?** The answer is use ***Generalised Linear Model***.
+
+What are the advantages of using GLMs?
+
+1. **Flexibilty** in the types of response variable: While with linear regression you can only have a **continuous** response variable,
+GLMs can have various types of response variables.
+2. **Interpretability** They are also interpretable !!
+
+When to use them? 
+
+1. When **linearity** is violated
+2. When **response** variable is non-normal
+
+GLMs extend the linear model as follows:
+
+
+$$
+g(\\mu_i) = \\beta_0 + \\beta_1 X_{i1} + \\beta_2 X_{i2} + \\dots + \\beta_p X_{ip}
+$$
+
+- $$g(\\mu_i)$$ is the **link function** that connects the expected value of the response variable to the linear predictor
+
+So the only difference between linear regression and generalised linear modelling is the addition of link functions.
+
+There are various types of link functions that can be used for different types of response variable. Let's explore some:
+
+### Exponential Family
+
+**Sufficient statistic**
+
+
+Types of exponential distribution:
+
+- Normal
+- Poisson
+- exponential
+
+
+
+
+`
     }
 
 ]

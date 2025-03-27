@@ -1,7 +1,7 @@
 import styled from "styled-components"
 import { useState } from "react";
 import { RxCross2 } from "react-icons/rx";
-import Markdown from "react-markdown";
+import MarkdownRenderer from './Markdown.js';
 import { useEffect } from "react";
 import { listOfBlog, listOfProject } from './utils.js';
 import { CCarousel, CCarouselCaption, CCarouselItem, CImage } from '@coreui/react'
@@ -435,12 +435,14 @@ const Projects = (props) => {
                         )}
 
                         <MarkDownWrapper>
-                            <Markdown>{modalContent.markdown}</Markdown>
+                            <div className=".markdown-container">
+                            <MarkdownRenderer markdownContent={modalContent.markdown}></MarkdownRenderer>
                             {modalContent.htmlFile ? (
                                 <div dangerouslySetInnerHTML={{__html: htmlContent}}></div>
                             ) : (
                                 <></>
                             )}
+                            </div>
                             
                         </MarkDownWrapper>
                     </Popup>
