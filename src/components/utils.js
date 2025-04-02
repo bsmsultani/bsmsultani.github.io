@@ -1,4 +1,5 @@
 import React from "react"
+import CollapsibleCode from './CollapsibleCode';
 
 export const listOfProject = [
     {
@@ -156,34 +157,79 @@ Interested in learning more? Let’s connect.
         "id" : 5,
         "image_url" : "https://sunstateconveyancing.com.au/wp-content/uploads/2023/07/buying-real-estate-at-auction.jpg",
         "name" : "How I Made a Full Auction Software in C#",
-        "description" : "In this OOP uni project, I made a C# auction software allwoing users to advertise products, bid advertised products and accept bids while also ensuring data integrity.",
+        "description" : "In this OOP project, I made a C# auction software allwoing users to advertise products, bid advertised products and accept bids while also ensuring data integrity.",
         "tags" : ["OOP", "C#"],
         "markdown" : `
 
 
-### How I built it?
-This project was honestly very complex, I mean from user registeration, login-in and advertising products and accepting the highest bid, it
-wasn't easy, but dare I say very cool and I learned how to harness the power Object Oriented Design. I mean just look at the UML diagram below, it is
-massive. But don't worry we will break it down.
+
+### Introduction
+
+Object Oriented Programming (OOP) is a fundamental paradiagm of programming that aims to build a reusable and modular code.
+
+Some of the fundamental concepts of OOP include:
+
+- ***Object:*** An instance of a class which is the blueprint for manipulating and operating on the data.
+- ***Encapsulation:*** Is the idea of bundling attributes and methods that operate on the data into a single class. And sometimes restricting
+access to some of the methods or attributes. 
+- ***Inheritance:*** Allows for classes to inherit properties and methods of another class. Such as class Dog inheriting from class Mammal.
+- ***Polymorphism:*** This concept ties to inheritance and allows of different classes (cat, dogs .. ) to be treated as objects of a common super class
+(mammal). It allows us to build functionality that operates on mammels (cats, or dogs) without needing to know the type of mammel.
+- ***Abstraction:*** This is typically achieved through abstract classes or interfaces, which allows for blueprints for sub-classses to follow
+without worrying about specific implementation details. For example class abstract Animal has methods make_sound, jump etc ... this means
+any class inheriting from Animal may need to implement these methods. 
+
+### The Vision
+
+Any software implemented using Object Oriented design can be powerful and easily maintainable. To trully demonstrate its power, I built
+an aunctioning software. Here was the idea:
+
+- **Registeration** : allow users to register, while ensuring valid form input and database management
+- **Login** : Allows user to login and authenticate in the database
+- **log out** : Sign the user out and cut connection to the database
+- **Advertise Product** : Allow users to advertise products by entering approperiate fields related to product and making it viewable to other customers.
+- **Search for Product** : Allow users to search for products.
+- **Bid products** : Allow users to bid a product from the list of advertised products
+- **View Bids and accept one** : Allow user to view bid on their product and accept one.
+- **View Purchased Items** : One a bid is accepted, move product to purchased for the bidded user.
+
+
+The full functionality was implemented and can be seen in the UML diagram below:
 
 ![complete UML diagram](${"/projects/auction_house_1.png"})
 
+Figure 1: Shows a UML (Unified Modelling Language) of the auctioning software
+
+I know it may seem complex at first, but we'll break it down step by step, and you'll see the true power of OOP.
+
 ### 1 Building the user interface
+
+In order to achieve the specified, goal I had to start with primitive requirements. First I had to build the user interface.
+
 Building the UI was challenging as it required flexible menu system that could adapt to different user states and actions. For example
-if the user wasn't signed it, it would've shown a menu to register, sign in or exit. If the user was siged in, it would've show
-list of products etc..
+if the user wasn't signed in, it would've shown a menu to register, sign in or exit. If the user was siged in, it would've show
+advertise product, view products, log-out etc..
 
 ![UML diagram of the UI](${"/projects/auction_house_2.png"})
+Figure 2: Shows the snippet of the UML diagram concerning the UI
 
-##### 1.1 The basics
+##### \`1.1 Abstract Menu Class \`
 
-I started by sketching out what I needed: menus that could display different options based on whether a user was logged in or not, buttons that would trigger specific actions, and a way to handle user input that felt natural in a console environment. I knew I needed something reusable but customisable.
+I started by sketching out what I needed: menus that could display different options 
+based on whether a user was logged in or not, buttons that would trigger specific actions, and a way 
+to handle user input that felt natural in a console environment. I knew I needed something reusable but customisable.
 
-So I began with the abstract Menu class. This would be the backbone of every menu in the system. It would have a title, a collection of buttons, and methods to start and stop displaying. By making it abstract, I could ensure every concrete menu would implement the necessary display logic while adding its own unique features.
+
+So I began with the abstract \`Menu\` class. This would be the backbone of every menu in the system. It would have a 
+\`title\`, a \`collection of buttons\`, and methods to start and stop displaying. By making it abstract, I could ensure 
+every concrete menu would implement the necessary display logic while adding its own unique features.
+
+
 
 ##### 1.2 Making Menus
 
-From there, I created the MainMenu and ClientMenu classes. The MainMenu would be the welcoming face of the application, offering options for registration, sign-in, and exit. The ClientMenu would appear after successful authentication, presenting options specific to authenticated users.
+From there, I created the MainMenu and ClientMenu classes. The MainMenu would be the welcoming face of the application, offering options for registration, sign-in, and exit. 
+The ClientMenu would appear after successful authentication, presenting options specific to authenticated users.
 
 I remember implementing the Configure() method in each menu to set up their unique buttons and events. This allowed each menu to initialise itself with the appropriate options without tight coupling to other parts of the system.
 
@@ -1145,7 +1191,92 @@ Therefore functions also need a type.
         
 
 
+- *** Monoids ***
+
+        They allow for composing functions while removing complexity.
+
+        Consider a collection of functions S (f, g, h) all of type a -> a
+
+        we can compose a new function by composing f and g:
+
+            (f * g) x = g(f x)
+
+            (f * g) * h = f (g * h)
+
+
+- *** Monadic Theory ***
+
+        What if we have a function that produces \` M<a \` rather than \`a\`
+
+        An example is \`Option<int>\`, it may produce \`int\` or \`None\`
+
+        The problem is \`g and h\` can no longer be composed, g may give h a value that it is not expecting.
+
+        Therefore we need an \`adapter\` or a Bind function:
+
+            Consider,
+
+            \`let bar (a:int) (b:int) (c:int) = a + b / c\`
+
+            Now a, b or c maybe optional. This is where \`monad\` will help us.
+
+
+            Bind : M<a> -> (a -> M<a> ) -> M<a>     simple case
+            Bind : M<b> -> (b -> M<b> ) -> M<c>     general case
+
+
+            (f a) >>= g = Bind(f a) g
+
+            In this example the Bind function will get two functions f and g then connect them.
+            It will pass the right 
+
+
+
+
+        type MaybeBuilder() =
+            member this.Bind(x, f) =
+                match x with
+                |   Some(v) -> f v
+                |   _ -> None
+            
+            member this.Return(v) = Some v
+
+
+        let foo (oa:Optional<int>) (ob:Optional<int>) (oc:Optional<int>) = 
+            maybe {
+                let! (a:int) = oa
+                let! (b:int) = ob
+                let! (c:int) = oc
+
+                return (a + b / c)
+            }
+
+        The above code is syntactic sugar for:
+
         
+        maybe.Bind(oa, fun a -> 
+            maybe.Bind(ob, fun b ->
+                maybe.Bind(oc, fun c ->
+                    maybe.Return(a + b / c))))
+
+        It unwraps oa and passes it to function b if oa is some
+
+        otherwise if it returns None, the subsequent calls do not get executed.
+
+
+
+- *** Problems maonds aim to solve ***
+
+        Functional programs are a series of explicit statements. If an algorithm is too explicit, it can become
+        complex. Monads help solve this by abstracting away some of the explicitness.
+
+
+- *** Seq Monad ***
+
+        - 
+
+
+
 
 
 
@@ -1197,14 +1328,145 @@ There are various types of link functions that can be used for different types o
 
 ### Exponential Family
 
-**Sufficient statistic**
-
-
 Types of exponential distribution:
 
-- Normal
-- Poisson
-- exponential
+- ***Normal*** - 
+- ***Poisson*** - 
+- ***exponential*** - 
+
+
+**Moments**
+
+Exponential family of distributions have their moments defined:
+
+$$
+m^{th} moment = E[(X - E[X])^m]
+$$
+
+The first moment is mean, second variance etc ...
+
+Distribution not in the family of exponentials:
+
+- Student-t
+- Uniform
+
+
+A probability distribution belongs to the family of **exponential distribution** if its probability density function
+or probability mass function (pmf) can be written in the following forms:
+
+
+$$
+f(z|\\xi) = \exp[t(z)u(\\xi)] r(z) s(\\xi)
+$$
+
+- (z) is the value of the random variable.
+- \(\\xi\) is the parameter of the distribution.
+- \(t(z)\), \(u(\\xi)\), \(r(z)\), and \(s(\\xi)\) are real-valued functions.
+- \(r(z) > 0\) and \(s(\\xi) > 0\) for all \(z\) and \(xi).
+
+If you take random samples from a distribution in the exponential family, the structure of the distribution is preserved.
+
+$$
+f(z|\\xi) = \\exp\\left[ u(\\xi) \\sum_{i=1}^{n} t(z_i) + \\sum_{i=1}^{n} \\log r(z_i) + n \log s(\\xi) \\right]
+$$
+
+
+**Canonical Form**
+
+The exponential family of distributions can be written in a specific form, called the canonical form. This form is useful and simplifies
+calculations for many of the statistics:
+
+$$
+f(y | \\theta, \\phi) = \\exp \\left( \\frac{y\\theta - \\kappa(\theta)}{a(\\phi)} + c(y, \\phi) \\right)
+$$
+
+
+- y: The observed data (no transformation applied).
+- $$\\theta$$: The canonical parameter (no transformation applied).
+- $$\\phi$$: A dispersion parameter (often related to the variance).
+- $$\\kappa(θ)$$: The log-partition function, which ensures the distribution is properly normalised (i.e., integrates to 1).
+- $$a(\\phi)$$: A scaling function that depends on the dispersion parameter ϕ.
+- c(y,ϕ): A function that depends only on the data y and the dispersion parameter ϕ.
+
+
+
+### Link Function
+
+##### Binomail (logistic link function)
+
+- Useful links: [Medium Article](https://medium.com/towards-artificial-intelligence/logistic-regression-4006b2482f43)
+
+Let's consider whether a student will ***pass/fail*** an exam.
+
+In order to understand this, we will consider using a $$logit$$ function. This function closely ties with **odds**.
+
+$$
+odds = \\frac{p}{q}
+$$
+
+However, this expression is not within the $$ 0 +\\infty$$. In order to make this expression within $$-\\infty +\\infty$$,
+we need to apply natural log to it.
+
+$$
+
+ln(odds) = ln(\\frac{p} {1 - p})
+$$
+
+Using this equation, we can say:
+
+$$
+Z = XW = ln(\\frac {\\hat{y}} {1 - \\hat{y}})
+$$
+
+Where $$\\hat{y}$$ is the probability of success.
+
+The above equation is saying that there is equality between the linear combination (X) and log-odd. It is treating the linear combination
+as log-odds. This makes easier when transforming the linear combination into probabilities:
+
+After some rearrangements, we can say:
+
+$$
+\\hat{y} = \\frac{1}{1 + \\exp^{-z}}
+$$
+
+
+***Why not use linear combination as probabilites directly***
+
+Because the value will not be bounded between $$[0, 1]$$, instead bounded by $$-\\infty +\\infty$$
+
+As you can see the logit function was able to correctly transfrom our linear combination into a useful form.
+
+
+There are two other binomail link functions:
+
+- probit
+- complementary log odds
+
+#### Poisson Link Functions
+
+For Poisson regresssion, the most common link function is the ***log link function***.
+
+$$
+ln(\\hat{y}) = Z =  ln(n^i) + B_0 + B^iX^i
+$$
+
+or
+
+$$
+
+\\hat{y} =  N\\exp(XW)
+
+$$
+
+Note that in the exploratory data analysis, we are expecting a ***straight line relationship between ln(y) and XW***.
+For example **log (mortality rate per year)** vs age group. Also note that $$N^i$$ is an offset, this is to ensure
+fairness between different groups. In the mortality vs age group, this would adjust for population sizes in each age groups.
+
+
+
+**Determining casuality**
+
+Do a randomised controlled experiment and determine if factors have significant effects.
 
 
 
