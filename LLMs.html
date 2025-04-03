@@ -5,26 +5,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Large Language models an exploration</title>
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            line-height: 1.6;
-            margin: 0;
-            padding: 20px;
-            color: #333;
-        }
-        h1 {
-            text-align: center;
-            color: #2c3e50;
-            margin-bottom: 30px;
-        }
-        h2 {
-            color: #34495e;
-            border-bottom: 2px solid #3498db;
-            padding-bottom: 10px;
-            margin-top: 40px;
+        img {
+            max-width: 500px !important;
+            display: block;
+            margin: 20px;
         }
 
-
+        .img_container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
     </style>
 </head>
 <body>
@@ -36,7 +27,25 @@
         I don't really understand the transformer architecture, so I thought this might be a great opportunity for me to share my journey
         learning this from zero to hero.
     </p>
+    <h2>An overview of the architecture</h2>
+    <div class="img_container">
+        <img src="https://miro.medium.com/v2/resize:fit:4800/format:webp/0*0n5M-lTWbbuVB0ug">
+    </div>
 
-    <h2>hellos</h2>
+    <h2>Tokenisation</h2>
+    <p>
+        This is the first step and many of you maybe already familiar with this concept. It is the mapping of words into an a series of numbers called
+        token. There are various libraries that have methods defined that can turn your words into tokens. One popular library is the <strong>transformers</strong>
+        library which allows us to use tokenisation methods from open source models.
+    </p>
+    <pre><code>
+from transformers import AutoTokenizer
+
+tokenizer = AutoTokenizer.from_pretrained("bert-base-uncased")
+text = "Hello, how are you?"
+tokens = tokenizer.tokenize(text)
+        
+    </code></pre>
+
 </body>
 </html>
