@@ -1572,10 +1572,14 @@ fairness between different groups. In the mortality vs age group, this would adj
 
 Do a randomised controlled experiment and determine if factors have significant effects.
 
-
-
-
 `
+    },
+    {
+        "id" : 7,
+        "name" : "Diving deep into LLMs" ,
+        "image_url" : "https://media.licdn.com/dms/image/v2/D4D12AQGBG0RgeyMHVw/article-cover_image-shrink_720_1280/article-cover_image-shrink_720_1280/0/1692187763032?e=2147483647&v=beta&t=f139Om73qZxbbvCtA-EKhPWUC-YU3qCVRmNCqDM2d3g",
+        "tags" : ["NLP", "Neural Networks"],
+        "htmlFile" : "LLMs.html"
     }
 
 ]
