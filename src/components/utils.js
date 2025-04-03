@@ -1,5 +1,76 @@
-import React from "react"
-import CollapsibleCode from './CollapsibleCode';
+import React, { useState } from 'react';
+
+const CollapsibleCode = ({ codeContent, title = "Code" }) => {
+  const [isCollapsed, setIsCollapsed] = useState(true);
+
+  const toggleCollapse = () => {
+    setIsCollapsed(!isCollapsed);
+  };
+
+  const styles = {
+    container: {
+      width: '100%',
+      maxWidth: '600px',
+      margin: '10px auto',
+      fontFamily: 'Arial, sans-serif',
+    },
+    button: {
+      width: '100%',
+      backgroundColor: '#007bff',
+      color: 'white',
+      border: 'none',
+      padding: '10px',
+      fontSize: '16px',
+      cursor: 'pointer',
+      textAlign: 'left',
+      borderRadius: '5px',
+      transition: 'background-color 0.3s',
+    },
+    buttonHover: {
+      backgroundColor: '#0056b3',
+    },
+    content: {
+      overflow: 'hidden',
+      maxHeight: isCollapsed ? '0' : '500px',
+      opacity: isCollapsed ? 0 : 1,
+      transition: 'max-height 0.3s ease-out, opacity 0.3s ease-out',
+      border: isCollapsed ? 'none' : '1px solid #ddd',
+      padding: isCollapsed ? '0' : '10px',
+      background: isCollapsed ? 'transparent' : '#f4f4f4',
+      borderRadius: '5px',
+    },
+    pre: {
+      margin: 0,
+      overflowX: 'auto',
+    },
+    code: {
+      fontFamily: "'Courier New', Courier, monospace",
+      fontSize: '14px',
+    },
+  };
+
+  return (
+    <div style={styles.container}>
+      <button 
+        style={styles.button} 
+        onMouseEnter={(e) => e.target.style.backgroundColor = styles.buttonHover.backgroundColor}
+        onMouseLeave={(e) => e.target.style.backgroundColor = styles.button.backgroundColor}
+        onClick={toggleCollapse}
+      >
+        {isCollapsed ? '▶ Show' : '▼ Hide'} {title}
+      </button>
+
+      <div style={styles.content}>
+        <pre style={styles.pre}>
+          <code style={styles.code}>{codeContent}</code>
+        </pre>
+      </div>
+    </div>
+  );
+};
+
+export default CollapsibleCode;
+
 
 export const listOfProject = [
     {
@@ -211,6 +282,7 @@ if the user wasn't signed in, it would've shown a menu to register, sign in or e
 advertise product, view products, log-out etc..
 
 ![UML diagram of the UI](${"/projects/auction_house_2.png"})
+
 Figure 2: Shows the snippet of the UML diagram concerning the UI
 
 ##### \`1.1 Abstract Menu Class \`
@@ -224,33 +296,48 @@ So I began with the abstract \`Menu\` class. This would be the backbone of every
 \`title\`, a \`collection of buttons\`, and methods to start and stop displaying. By making it abstract, I could ensure 
 every concrete menu would implement the necessary display logic while adding its own unique features.
 
+![a preview of the Menu Class](${"./projects/auction_house_6.png"})
+
+Figure 3: Shows a snippet of the logic of the \`Menu\` abstract class
+
+##### \`1.2 Making Menus\`
+
+From there, I created the \`MainMenu\` and \`ClientMenu\` classes. The \`MainMenu\` would be the welcoming face of the application, offering options for registration, sign-in, and exit. 
+The \`ClientMenu\` would appear after successful authentication, presenting options specific to authenticated users.
+
+Since the necessary logic was already in the parent abstract class \`Menu\`, I could focus on customisation.
+
+![code preview for the MainMenu class](${"./projects/auction_house_7.png"})
+
+Figure 4: Shows the \`MainMenu\` using the \`Menu\` logic to a customised welcome menu.
 
 
-##### 1.2 Making Menus
+##### \`1.3 Buttons\`
+Buttons were next. Each button needed to display text and trigger an action when pressed. 
+I created the \`Button class\` with properties for \`text\` and an event trigger. 
+The \`PressButton()\` method would execute the linked event (\`IEvent\`), creating the interaction between user input and system response.
 
-From there, I created the MainMenu and ClientMenu classes. The MainMenu would be the welcoming face of the application, offering options for registration, sign-in, and exit. 
-The ClientMenu would appear after successful authentication, presenting options specific to authenticated users.
+To make buttons truly flexible, I implemented the \`IEvent interface\`. This allowed any type of \`Event\` (like registration, sign-in, or searching for products) to be triggered. 
+By decoupling buttons from their specific actions, I could change or add functionality without rewriting UI components.
 
-I remember implementing the Configure() method in each menu to set up their unique buttons and events. This allowed each menu to initialise itself with the appropriate options without tight coupling to other parts of the system.
+![the Button class implementation](${"./projects/auction_house_8.png"})
 
-##### 1.3 Buttons
-Buttons were next. Each button needed to display text and trigger an action when pressed. I created the Button class with properties for text and an event trigger. The PressButton() method would execute the linked event, creating the interaction between user input and system response.
-
-##### 1.4 Button Events
-To make buttons truly flexible, I implemented the IEvent interface. This allowed different types of actions (like registration, sign-in, or searching for products) to be triggered uniformly. By decoupling buttons from their specific actions, I could change or add functionality without rewriting UI components.
 
 Below you can see events like registeration, sign-in and exit...
 
 ![Upload Video](${"/projects/auction_house_4.png"})
 
-Events like search for products and log out.
 
-![Searching for products](${"/projects/auction_house_5.png"})
+Overall, this was extremely helpful as it demonstrates the power of polymorphism, allowing any event to be triggered when a specific button
+is pressed.
 
 
-##### 1.5 Handling User Input
-Input handling was tricky. I needed a system that could prompt users for information, validate their responses, and handle errors gracefully. This led to the creation of the abstract ConsoleInput class and its concrete implementation, SelectOptions.
-SelectOptions became crucial for managing user selections. It could validate input against expected values, display appropriate prompts, and handle invalid entries with clear error messages. This made the UI feel responsive and user-friendly even in a console environment.
+##### \`1.5 Handling User Input\`
+
+Input handling was tricky. I needed a system that could prompt users for information, validate their responses, and handle errors gracefully. 
+This led to the creation of the abstract ConsoleInput class and its concrete implementation, SelectOptions.
+SelectOptions became crucial for managing user selections. It could validate input against expected values, display appropriate prompts, 
+and handle invalid entries with clear error messages. This made the UI feel responsive and user-friendly even in a console environment.
 
 ![Upload Video](${"/projects/auction_house_3.png"})
 
@@ -263,12 +350,11 @@ SelectOptions became crucial for managing user selections. It could validate inp
     {
         "id" : 6,
         "image_url" : "https://www.nvidia.com/content/dam/en-zz/Solutions/high-performance-computing/hpcandai/nvidia-simnet-closeup-2c50-p@2x.jpg",
-        "name" : "How I Made An Application 1000x faster",
+        "name" : "How I Made An Application 7x faster",
         "description" : "",
         'tags' : ["Parallel Computing", "Cuda", "C++"],
-        "markdown" : `
-# Article in progress
-        `
+        "htmlFile" : "cab401_assignment.html"
+
 
 
     },
@@ -768,6 +854,24 @@ Some mark up elements are more important than others:
 
 
 
+---
+
+## TF-IDF
+
+This is an important concept that is used to analyse and understand importance of words in a document.
+
+***TF*** - measures the frequency of words within a document
+
+$$
+TF(t, d) = \\frac{number \\: of \\: times \\: term \\: t \\: appears \\: in \\: d \\: document}{total \\: number \\: of \\: term \\: in \\: document d}
+$$
+
+
+IDF measures the rarity of a term across a collection of documents. It uses log to penalise high occuring words.
+
+$$
+TF-IDF(t,d,D) = TF(t,d) × IDF(t,D)
+$$
         `
     },
 

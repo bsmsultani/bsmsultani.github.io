@@ -44,13 +44,7 @@ const ContactMe = () => {
     return (
         <Container>
             <h1>Under Construction</h1>
-            <div>
-                <Input type="text" placeholder="Your name"></Input>
-                <Input type="email" placeholder="Your email"></Input>
-            </div>
-            <TextArea placeholder="Tell me what is on your mind"></TextArea>
-            <Input type="submit" value="submit"></Input>
-        </Container>
+       </Container>
     )
 }
 
