@@ -4,6 +4,16 @@
   <meta charset="UTF-8">
   <title>Text and Web Analysis Blog</title>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+  <style>
+    img {
+      height: 500px;
+      max-width: 900px;
+      display: block;      /* the element takes its own line */
+      margin: 10px auto;
+
+
+    }
+  </style>
 
 </head>
 <body>
@@ -199,5 +209,26 @@
     </pre>
     This step ensures that terms across different documents can be compared in a fair manner.
   </p>
+  <h2>Information Retrival Model</h2>
+  <p>
+    A mathmatical framework to retrieve information from a set of documents. For a given query, IR finds a set of documents that answers the query.
+    There are various methods of IR:
+    <hr>
+    <strong>Boolean IR model</strong>
+    <br>
+    Uses True or False depending if the document is exact match or
+    IR models that uses AND, OR, NOT constraints such as "president AND lincon".
+    This type of model is easy and predictable but the effectiveness entirely depends on the user query.
+
+    <hr>
+    <strong>Vector Space Model</strong>
+    <br>
+    Documents and queries are represented as vectors.
+    <img src="vector_space.png">
+    We can workout the similarity using cosine:
+    <img src="cosine_similarity.png" alt="" style="width: 500px; height: 3%;">
+
+  </p>
+
 </body>
 </html>
