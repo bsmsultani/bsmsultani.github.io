@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Text and Web Analysis Blog</title>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+</head>
+<body>
+
+  <h3>Backstory</h3>
+  <p>Hey guys. So a bit of a backstory – I am currently studying a unit (<code>CAB431 Text and Web analysis</code>) and I thought it would be a great idea to write a blog documenting everything important that I learn along the way.</p>
+  <p>Enjoy!</p>
+
+  <h3>Introduction</h3>
+  <p>To start – it is no secret that textual information is ubiquitous and having a method of <strong>retrieving</strong> relevant documents and <strong>classifying</strong> them is crucial. This is what we will delve into in the first part. And let's not forget there are two ways to achieve this:</p>
+  <ol>
+    <li>Employing Statistical methods</li>
+    <li>Employing Machine Learning Methods</li>
+  </ol>
+  <p><strong>There are a few steps we need to follow when we are doing text‑analysis.</strong></p>
+
+  <h4>1 – Text Acquisition</h4>
+  <ul>
+    <li>This is pretty self explanatory. We need to collect a set of documents first and foremost in order to analyse them!</li>
+  </ul>
+
+  <hr>
+
+  <h4>2 – Text Pre‑processing</h4>
+  <p>Things to watch out for:</p>
+
+  <h5>Key Linguistic Laws</h5>
+  <ul>
+    <li><strong>Zipf's Law</strong>: A few words occur very frequently, while many words occur rarely.</li>
+    <li><strong>Heap's Law</strong>:
+      <ul>
+        <li>Formula: <code>v = k * n<sup>B</sup></code></li>
+        <li>Where:
+          <ul>
+            <li><code>v</code> = number of unique words</li>
+            <li><code>n</code> = number of words</li>
+            <li><code>B</code> is between 0.5 and 1</li>
+            <li><code>k</code> is between 10 and 100</li>
+          </ul>
+        </li>
+        <li>This law works well with large corpora.</li>
+      </ul>
+    </li>
+  </ul>
+
+  <h4>2.1 – Tokenization</h4>
+  <p>Tokenization involves standardizing text by applying a set of rules, such as:</p>
+  <ul>
+    <li>Removing special characters</li>
+    <li>Converting words to lowercase</li>
+  </ul>
+  <p>However, special rules need to be in place for cases where removing characters may affect the meaning (e.g., <strong>T‑Mobile</strong>). This step often includes:</p>
+  <ul>
+    <li>Removing stop words</li>
+    <li>Applying specific rules to retain important terms</li>
+  </ul>
+
+  <h4>2.2 – Stemming</h4>
+  <p>Stemming reduces words to their root forms, addressing plural forms and tenses:</p>
+  <ul>
+    <li><strong>Dictionary‑based methods</strong>:
+      <ul>
+        <li>Porter stemmer</li>
+        <li>Krovets stemmer</li>
+      </ul>
+    </li>
+    <li><strong>Algorithmic‑based methods</strong>: These methods apply heuristics to reduce words to their stems.</li>
+  </ul>
+
+  <h4>2.3 – N‑grams</h4>
+  <p>Many queries are phrases, typically consisting of two or more words. When processing these queries, we need to decide:</p>
+  <ul>
+    <li>Do we match both words together (a phrase), or do we match just one word?</li>
+    <li>This method moves an n‑window at a time.</li>
+  </ul>
+
+  <h5>Methods for Extracting Phrases</h5>
+  <ul>
+    <li><strong>POS Tagging (Part‑of‑Speech Tagging)</strong>: Uses statistical models to assign tags to words, identifying their grammatical role (e.g., <code>NN</code> for singular noun).
+      <ul>
+        <li>Example: <code>dog/NN</code>, <code>cat/NN</code></li>
+        <li>We can use <code>nltk.pos_tag(words)</code> to get words with their corresponding tags.</li>
+      </ul>
+    </li>
+    <li><strong>Word N‑Grams</strong>: A phrase is any sequence of <em>n</em> words. The idea is to move a window across the text to extract all possible sequences of words.</li>
+  </ul>
+
+  <hr>
+
+  <h4>3 – Text Transformation</h4>
+  <p>This step involves using the documents to create a set of indices. These indices help us to retrieve information faster during querying.</p>
+  <p><strong>Type of Index</strong></p>
+  <ul>
+    <li><em>Inverted index:</em> Maps each term to a list of documents that contain that term. <code>{"fox": ["doc1", "doc2"]}</code></li>
+  </ul>
+
+  <hr>
+
+  <h3>Issues with Search Engine Technology</h3>
+  <ul>
+    <li>Dynamic data: The web is changing all the time, serving the freshest data is crucial</li>
+    <li>Scalability: Large user base, narrowing the search is crucial</li>
+    <li>Adaptability: Changing and tuning search engine components such as ranking algorithm & indexing strategy</li>
+  </ul>
+
+  <hr>
+
+  <h3>Things you can do with text analysis</h3>
+  <ul>
+    <li>Text classification</li>
+    <li>Important words extraction</li>
+    <li>Spelling check &amp; Auto completion</li>
+    <li>Recommender Systems</li>
+  </ul>
+
+  <hr>
+
+  <h3>Information Extraction</h3>
+  <ul>
+    <li>Automatically extracting useful information from a set of documents such as name, address etc.</li>
+    <li><strong>Semantic Annotation</strong>: tagging words in text with tags &lt;Name&gt;Fred&lt;/Name&gt;</li>
+  </ul>
+
+  <h4>Approaches to named entities</h4>
+  <ul>
+    <li>Rule‑based: uses known phrases such as list of words to recognise named entities</li>
+    <li><strong>Statistical Approaches:</strong> <em>Hidden Markov Model</em>, uses a probabilistic model of words in and around the named entity
+      <ul>
+        <li>Resolves ambiguity (e.g. person name or city name) by using context (around the word)</li>
+        <li>Accurate recognition requires about 1 million words for training data</li>
+        <li>Useful YouTube video: <a href="https://www.youtube.com/watch?v=fX5bYmnHqqE">https://www.youtube.com/watch?v=fX5bYmnHqqE</a></li>
+      </ul>
+    </li>
+  </ul>
+
+  <hr>
+
+  <h3>Document Structure Mark-up</h3>
+  <p>Some mark-up elements are more important than others:</p>
+  <ul>
+    <li>Headers</li>
+    <li>Anchor text</li>
+    <li>Alternative text</li>
+  </ul>
+
+  <h4>TF‑IDF</h4>
+  <p>
+    This an important concept that measures the importance of a word within a document that is part of bigger collection,
+    by taking in consideration the importance of the word in the bigger collection as well.
+  </p>
+  
+  <strong>Term Frequency</strong> 
+  <p>
+    This measures how important a word is within a document. The basic intuition is that if a word appears in a document more
+    then it is likely to be more important and relevant to that document.
+
+    <pre><code>
+    TF(t, d) = log(number of times <storng>t</storng> appears in document <strong>d</strong> + 1
+    </code></pre>
+
+    The logrithmic scale reduces the impact of really high count words, as there is a diminishing return.
+  </p>
+  <hr>
+  <strong>Inverse Document Frequency</strong>
+  <p>
+    This measures the rearity of the term in other documents in the collection. The intuition is that a term occuring
+    many times in other documents is less informative for a given document.
+    <pre>
+    <code>
+    IDF(t) = log(total number of documents / number of documents containing term <strong>t</strong>)
+    </code>
+    </pre>
+
+    The logrithmic scale ensures that that words that appear in all documents have less IDF value and words that appear in less documents
+    have more IDF value.
+  </p>
+  <hr>
+  <strong>Combining TF-IDF</strong>
+  <p>
+    The core is that by multiplying these values we get the importance of a word in a given document. A high TF-IDF value
+    indicates high relevance in a particular document and low relevance in other documents.
+  </p>
+
+  <hr>
+  <strong>Normalising TF-IDF</strong>
+  <p>
+    With non-normalised TF-IDF some documents can be longer and have more words than other documents. Since the occurrence of words
+    can impact their importance, accounting for the lenth of the document can account for this factor.
+    <pre>
+    <code>
+    sqrt(summation of all the weights ^ 2)
+    </code>
+    </pre>
+    This step ensures that terms across different documents can be compared in a fair manner.
+  </p>
+</body>
+</html>
