@@ -5,38 +5,61 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Large Language models an exploration</title>
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            line-height: 1.6;
-            margin: 0;
-            padding: 20px;
-            color: #333;
-        }
-        h1 {
-            text-align: center;
-            color: #2c3e50;
-            margin-bottom: 30px;
-        }
-        h2 {
-            color: #34495e;
-            border-bottom: 2px solid #3498db;
-            padding-bottom: 10px;
-            margin-top: 40px;
+        img {
+            max-width: 500px !important;
+            display: block;
+            margin: 20px;
         }
 
-
+        .img_container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
     </style>
 </head>
 <body>
     <h1>In depth exploration of transformers</h1>
     <p>
-        I am working on an assignment this semester and it involves implementing a transformer architecture in F#. 
         if you don't know what a <strong>transformer architecture</strong> is, it is currently state of the art neural network
         architecture used to process sequence data such as words, time series etc.. Although I now some things about neural network,
-        I don't really understand the transformer architecture, so I thought this might be a great opportunity for me to share my journey
-        learning this from zero to hero.
+        in this article we will build transformers from ground up, explaining each component in detail providing pytorch code for each
+        concept.
     </p>
+    <h2>An overview of the architecture</h2>
+    <div class="img_container">
+        <img src="https://miro.medium.com/v2/resize:fit:4800/format:webp/0*0n5M-lTWbbuVB0ug">
+    </div>
+    <h2>Embeddings</h2>
+    <p>
+        An embedding is a solution to a fundamental problem: computers deal with numbers and we want to input words
+        or data into computers to understand. Therefore we need to convert our data into a numeric representation 
+        that computers can understand.
+    </p>
+    <p>
+        <strong>Embedding</strong> is a learned representation of a <strong>word</strong> or data as a numeric such that it captures
+        the meaning or properties of the data. It allows machines to understand concepts and relationships.
 
-    <h2>hellos</h2>
+        <br>
+        <br>
+        This will make more sense as we delve deeper into this!
+    </p>
+    <h3>One Hot Encoding</h3>
+    <p>
+        This is the simplest form of embedding. Say we wanted to convert [cat, dog, humans] into 
+        this embedding. We would represent cat as [1, 0, 0] and dog as [0, 1, 0] and human as [0, 0, 1].
+
+        <br>
+        This means the position of each word is orthogonal to each other - furthest apart from one another.
+        <br>
+        Ideally we want words that are similar close to one another. Dogs and Cats are semantically close compared to humans,
+        as they are both animals. However with one hot encoding this relationship is not captured. One hot encoding also introduces the issue
+        big dimentionality as we would need a new dimention for every word.
+    </p>
+    <h3>Learned Embedding</h3>
+    <p>
+        It is much more common to use a learned embedding. Consider the 
+    </p>
+    <p>
 </body>
 </html>

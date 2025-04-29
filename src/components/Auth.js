@@ -1,60 +1,102 @@
 import styled from "styled-components";
 
-const AuthContainer = styled.div`
+const Container = styled.div`
     display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 80vh;
     flex-direction: column;
-`
+    justify-content: center;
+    align-items: center;
+    min-height: 80vh;
+    padding: 2rem;
+    background-color: rgba(135, 206, 235, 0.3);
+`;
+
+const AuthForm = styled.form`
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    max-width: 600px;
+    background-color: white;
+    padding: 2.5rem;
+    border-radius: 40px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    
+    @media (max-width: 768px) {
+        border-radius: 0;
+        padding: 1.5rem;
+    }
+`;
+
+const Title = styled.h1`
+    margin-bottom: 2rem;
+    color: #2c3e50;
+    font-size: 2.5rem;
+    font-weight: 600;
+    border-bottom: 2px solid #3498db;
+    padding-bottom: 10px;
+`;
 
 const Input = styled.input`
-    all: unset;
-    padding: 20px;
+    width: 100%;
+    padding: 12px 15px;
+    margin-bottom: 1.5rem;
+    border: 1px solid #ddd;
     border-radius: 30px;
-    display: block;
-    margin: 10px;
-    &[type="button"] {
-        
-        background-color: rgb(135, 206, 235);;
-        padding: 8px 20px;
-        color: white;
-        font-size: 16px;
-        font-weight: bold;
-        border: none;
-        cursor: pointer;
-        transition: all 0.3s ease;
-        text-decoration: none;
-
-        &:hover {
-            background-color: #ddd;
-            transform: scale(1.1);
-        }
-
-        @media (max-width: 768px) {
-            border-radius: 0px;
-        }
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    
+    &:focus {
+        outline: none;
+        border-color: rgb(135, 206, 235);
+        box-shadow: 0 0 0 2px rgba(135, 206, 235, 0.2);
     }
-
-    &[type = "email"],
-    &[type = "password"],
-    &[type = "text"]{
-        border: 1px solid black;
-
+    
+    &::placeholder {
+        color: #aaa;
     }
+`;
 
-`
+const SubmitButton = styled.button`
+    background-color: rgb(135, 206, 235);
+    color: white;
+    border: none;
+    padding: 12px 30px;
+    border-radius: 30px;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    
+    &:hover {
+        background-color: #ddd;
+        transform: scale(1.1);
+    }
+    
+    &:active {
+        transform: scale(0.95);
+    }
+    
+    @media (max-width: 768px) {
+        border-radius: 0;
+    }
+`;
 
 const Authentication = () => {
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        // Handle login logic here
+    };
+    
     return (
-        <AuthContainer>
-            <h1>Authorised Users</h1>
-            <Input type="email" placeholder="email"></Input>
-            <Input type="password" placeholder="password"></Input>
-            <Input type="button" value="Login"></Input>
-        </AuthContainer>
-    )
-}
+        <Container>
+            <AuthForm onSubmit={handleSubmit}>
+                <Title>Authorised Users</Title>
+                <Input type="email" placeholder="Email" required />
+                <Input type="password" placeholder="Password" required />
+                <SubmitButton type="submit">Login</SubmitButton>
+            </AuthForm>
+        </Container>
+    );
+};
 
 export default Authentication;
-export { Input };
