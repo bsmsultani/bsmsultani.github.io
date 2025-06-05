@@ -9,6 +9,7 @@ import Footer from './components/Footer.js';
 import '@coreui/coreui/dist/css/coreui.min.css'
 import Authentication from './components/Auth.js';
 import ContactMe from './components/Contact.js';
+import Journey from './components/Journey.js';
 
 import './App.css';
 
@@ -24,7 +25,9 @@ const Home = () => {
     <div>
       <NavBar></NavBar>
       <Biography></Biography>
+      <Journey></Journey>
       <Projects isBlogs={false}></Projects>
+      
       <Footer></Footer>
     </div>
   )

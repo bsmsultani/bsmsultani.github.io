@@ -10,7 +10,6 @@ export const ProjectsLayout = styled.div`
 
 export const ProjectContainerBackground = styled.div`
     background-color: rgba(135, 206, 235, 0.3);
-    margin: 50px 0 auto;
     @media (max-width: 768px) {
         padding: 0px;
     }
