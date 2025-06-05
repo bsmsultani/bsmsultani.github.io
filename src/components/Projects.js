@@ -10,6 +10,8 @@ const Projects = (props) => {
     const navigate = useNavigate();
     const [searchTerm, setSearchTerm] = useState('');
     const [selectedTags, setSelectedTags] = useState([]);
+    const [currentPage, setCurrentPage] = useState(1);
+    const itemsPerPage = 6;
     const blogTagFrequency = {};
     const projectTagFrequency = {};
 
@@ -64,6 +66,7 @@ const Projects = (props) => {
                 return [...prev, tag];
             }
         });
+        setCurrentPage(1); // Reset to first page when filters change
     };
 
     const filterItems = (items) => {
@@ -77,22 +80,32 @@ const Projects = (props) => {
         });
     };
 
+    // Get current items for pagination
+    const getCurrentItems = (items) => {
+        const filteredItems = filterItems(items);
+        const indexOfLastItem = currentPage * itemsPerPage;
+        const indexOfFirstItem = indexOfLastItem - itemsPerPage;
+        return filteredItems.slice(indexOfFirstItem, indexOfLastItem);
+    };
+
+    const handlePageChange = (pageNumber) => {
+        setCurrentPage(pageNumber);
+    };
+
     return(
         <ProjectContainerBackground>
             <ProjectsLayout>
-       
-
                 <MainContentWrapper>
-                <Sidebar
-                    searchTerm={searchTerm}
-                    setSearchTerm={setSearchTerm}
-                    selectedTags={selectedTags}
-                    handleTagToggle={handleTagToggle}
-                    tagFrequency={props.isBlogs ? blogTagFrequency : projectTagFrequency}
-                />
+                    <Sidebar
+                        searchTerm={searchTerm}
+                        setSearchTerm={setSearchTerm}
+                        selectedTags={selectedTags}
+                        handleTagToggle={handleTagToggle}
+                        tagFrequency={props.isBlogs ? blogTagFrequency : projectTagFrequency}
+                    />
                     <ProjectGrid>
                         {props.isBlogs ? (
-                            filterItems(listOfBlog).map((blog) => (
+                            getCurrentItems(listOfBlog).map((blog) => (
                                 <ProjectCard 
                                     key={blog.id}
                                     id={blog.id} 
@@ -107,7 +120,7 @@ const Projects = (props) => {
                                 />
                             ))
                         ) : (
-                            filterItems(listOfProject).map((project) => (
+                            getCurrentItems(listOfProject).map((project) => (
                                 <ProjectCard 
                                     key={project.id}
                                     id={project.id} 
@@ -123,6 +136,24 @@ const Projects = (props) => {
                             ))
                         )}
                     </ProjectGrid>
+                    <div style={{ display: 'flex', justifyContent: 'center', margin: '20px 0' }}>
+                        {[...Array(Math.ceil(filterItems(props.isBlogs ? listOfBlog : listOfProject).length / itemsPerPage))].map((_, index) => (
+                            <button
+                                key={index}
+                                onClick={() => handlePageChange(index + 1)}
+                                style={{
+                                    margin: '0 5px',
+                                    padding: '5px 10px',
+                                    backgroundColor: currentPage === index + 1 ? '#DBE2FF' : 'white',
+                                    border: '1px solid #DBE2FF',
+                                    borderRadius: '5px',
+                                    cursor: 'pointer'
+                                }}
+                            >
+                                {index + 1}
+                            </button>
+                        ))}
+                    </div>
                 </MainContentWrapper>
             </ProjectsLayout>
             <ProjectModal 

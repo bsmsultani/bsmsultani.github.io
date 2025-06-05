@@ -46,6 +46,7 @@ const NavBarButton = styled.button`
     }
 `;
 
+
 const NavBar = () => {
 
     return (

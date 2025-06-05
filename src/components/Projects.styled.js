@@ -28,7 +28,7 @@ export const MainContentWrapper = styled.div`
 export const ProjectGrid = styled.div`
     display: flex;
     flex-wrap: wrap;
-    gap: 36px 32px;
+    gap: 24px 20px;
     justify-content: flex-start;
     width: 100%;
     max-width: 1200px;
@@ -49,7 +49,7 @@ export const ProjectGrid = styled.div`
     }
     & > * {
         flex: 1 1 320px;
-        max-width: 400px;
+        max-width: 360px;
         min-width: 280px;
         margin: 0 auto;
     }

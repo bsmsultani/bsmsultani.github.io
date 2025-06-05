@@ -109,6 +109,7 @@ const SidebarComponent = ({ searchTerm, setSearchTerm, selectedTags, handleTagTo
         <FilterWrapper>
             {Object.entries(tagFrequency)
                 .sort(([, countA], [, countB]) => countB - countA)
+                .slice(0, 15)
                 .map(([tag, count]) => (
                     <TagCheckboxWrapper key={tag} selected={selectedTags.includes(tag)}>
                         <input 

@@ -11,6 +11,9 @@ const ProjectCardWrapper = styled.div`
     text-align: center;
     box-shadow: 0 4px 16px rgba(0, 0, 0, 0.10);
     transition: all 0.25s cubic-bezier(.4,2,.6,1);
+    display: flex;
+    flex-direction: column;
+    min-height: 300px;
     &:hover {
         background-color: #f3f6ff;
         transform: scale(1.035) translateY(-4px);
@@ -20,6 +23,7 @@ const ProjectCardWrapper = styled.div`
         max-width: 98vw;
         border-radius: 12px;
         padding: 10px 2px 18px 2px;
+        min-height: 250px;
         &:hover {
             transform: scale(1.01);
         }
@@ -31,6 +35,27 @@ const ProjectImage = styled.img`
     border-radius: inherit;
     cursor: pointer;
     margin-bottom: 10px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+`;
+
+const TagsContainer = styled.div`
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    margin-top: auto;
+    padding: 10px 5px;
+`;
+
+const Tag = styled.span`
+    background-color: #DBE2FF;
+    margin: 2px;
+    padding: 5px 8px;
+    flex-shrink: 0;
+    border-radius: 5px;
+    font-size: 0.9rem;
 `;
 
 const ProjectCard = ({ id, image_url, name, description, markdown, tags, haveCarousel, htmlFile, isBlogs }) => {
@@ -59,14 +84,13 @@ const ProjectCard = ({ id, image_url, name, description, markdown, tags, haveCar
         <ProjectCardWrapper onClick={handleProjectClick}>
             <h3 style={{ margin: "5px", textAlign: "center" }}>{name}</h3>
             <ProjectImage src={image_url} alt={name} />
-            <p>{description}</p>
-            <div style={{ display: "flex", flexWrap: "wrap", alignItems: "center", justifyContent: "center" }}>
+            <TagsContainer>
                 {tags.map((tag, index) => (
-                    <span key={index} style={{ backgroundColor: "#DBE2FF", margin: "1px", padding: "5px", flexShrink: 0, borderRadius: "5px" }}>{tag}</span>
+                    <Tag key={index}>{tag}</Tag>
                 ))}
-            </div>
+            </TagsContainer>
         </ProjectCardWrapper>
     );
 };
 
-export default ProjectCard; 
+export default ProjectCard;
