@@ -24,6 +24,7 @@ export const MainContentWrapper = styled.div`
     }
 `;
 
+
 export const ProjectGrid = styled.div`
     display: flex;
     flex-wrap: wrap;
