@@ -376,6 +376,16 @@ and handle invalid entries with clear error messages. This made the UI feel resp
 # Article in progress
         
 `
+    },
+    {
+        "id" : 9,
+        "image_url" : "https://api.reliasoftware.com/uploads/what_is_flutter_fcb6c7a4b8.png",
+        "name" : "How I Made an Flutter and published it to the App Store",
+        "tags" : ["Flutter", "Mobile", "Development"],
+        "markdown" : `
+# Article in progress
+        
+`
     }
 
 ]

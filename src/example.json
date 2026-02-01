@@ -1,0 +1,58 @@
+{
+    "object": "page",
+    "id": "c3f4d454-c1e0-428e-ac6a-3cdc16cae63e",
+    "created_time": "2024-07-27T01:48:00.000Z",
+    "last_edited_time": "2024-08-24T01:29:00.000Z",
+    "created_by": {
+        "object": "user",
+        "id": "00dcc270-9898-4ff8-b94d-03cfbe0136f4"
+    },
+    "last_edited_by": {
+        "object": "user",
+        "id": "00dcc270-9898-4ff8-b94d-03cfbe0136f4"
+    },
+    "cover": {
+        "type": "external",
+        "external": {
+            "url": "https://www.notion.so/images/page-cover/solid_yellow.png"
+        }
+    },
+    "icon": {
+        "type": "emoji",
+        "emoji": "\ud83d\udcb5"
+    },
+    "parent": {
+        "type": "workspace",
+        "workspace": true
+    },
+    "archived": false,
+    "in_trash": false,
+    "properties": {
+        "title": {
+            "id": "title",
+            "type": "title",
+            "title": [
+                {
+                    "type": "text",
+                    "text": {
+                        "content": "CAB401",
+                        "link": null
+                    },
+                    "annotations": {
+                        "bold": false,
+                        "italic": false,
+                        "strikethrough": false,
+                        "underline": false,
+                        "code": false,
+                        "color": "default"
+                    },
+                    "plain_text": "CAB401",
+                    "href": null
+                }
+            ]
+        }
+    },
+    "url": "https://www.notion.so/CAB401-c3f4d454c1e0428eac6a3cdc16cae63e",
+    "public_url": null,
+    "request_id": "cba8175f-95e2-4268-a152-4a71b9a79738"
+}
