@@ -84,7 +84,7 @@ const Biography = () => {
                     <a href='https://github.com/bsmsultani' target='_blank' rel="noopener noreferrer" aria-label="GitHub">
                         <FaGithub size={35} color="#24292e" />
                     </a>
-                    <a href='https://leetcode.com/u/bismillah_s/' target='_blank' rel="noopener noreferrer" aria-label="LeetCode">
+                    <a href='https://leetcode.com/u/i9yc2Z7TeD/' target='_blank' rel="noopener noreferrer" aria-label="LeetCode">
                         <img src='leetcode_logo.png' width={35} height={35} alt="LeetCode" />
                     </a>
                 </SocialLinks>

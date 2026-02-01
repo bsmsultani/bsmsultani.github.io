@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Australian Citizenship Test App | Project</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.8;
+            color: #333;
+            background: linear-gradient(135deg, #f5f7fa 0%, #e4e8eb 100%);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            color: #2d3748;
+            margin-bottom: 15px;
+        }
+
+        .subtitle {
+            font-size: 1.2rem;
+            color: #4caf50;
+            font-weight: 500;
+        }
+
+        .tech-stack {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 20px;
+            flex-wrap: wrap;
+        }
+
+        .tech-badge {
+            background: #4caf50;
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+        }
+
+        .section {
+            background: white;
+            border-radius: 16px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+        }
+
+        h2 {
+            color: #2d3748;
+            margin-bottom: 20px;
+            font-size: 1.5rem;
+            border-bottom: 3px solid #4caf50;
+            padding-bottom: 10px;
+        }
+
+        p {
+            margin-bottom: 15px;
+            color: #4a5568;
+        }
+
+        .screenshot-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin: 30px 0;
+        }
+
+        .screenshot {
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+            transition: transform 0.3s ease;
+        }
+
+        .screenshot:hover {
+            transform: translateY(-5px);
+        }
+
+        .screenshot img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .feature-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .feature-list li {
+            padding: 12px 0;
+            border-bottom: 1px solid #e2e8f0;
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+        }
+
+        .feature-list li:last-child {
+            border-bottom: none;
+        }
+
+        .feature-icon {
+            background: #e8f5e9;
+            color: #4caf50;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            font-weight: bold;
+        }
+
+        .motivation-box {
+            background: linear-gradient(135deg, #4caf50 0%, #45a049 100%);
+            color: white;
+            padding: 25px;
+            border-radius: 12px;
+            margin: 20px 0;
+        }
+
+        .motivation-box h3 {
+            margin-bottom: 10px;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+            margin: 20px 0;
+        }
+
+        .stat-card {
+            background: #f8fafc;
+            padding: 20px;
+            border-radius: 12px;
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 2rem;
+            color: #4caf50;
+            font-weight: bold;
+        }
+
+        .stat-label {
+            color: #718096;
+            font-size: 0.9rem;
+        }
+
+        .back-link {
+            display: inline-block;
+            margin-bottom: 20px;
+            color: #4caf50;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .back-link:hover {
+            text-decoration: underline;
+        }
+
+        @media (max-width: 600px) {
+            h1 {
+                font-size: 1.8rem;
+            }
+
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .screenshot-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a href="/" class="back-link">&larr; Back to Portfolio</a>
+
+        <header>
+            <h1>Australian Citizenship Test App</h1>
+            <p class="subtitle">A Flutter Mobile Application</p>
+            <div class="tech-stack">
+                <span class="tech-badge">Flutter</span>
+                <span class="tech-badge">Dart</span>
+                <span class="tech-badge">Firebase</span>
+                <span class="tech-badge">iOS</span>
+                <span class="tech-badge">Android</span>
+            </div>
+        </header>
+
+        <section class="section">
+            <h2>About This Project</h2>
+            <p>
+                I built the Australian Citizenship Test app to help people preparing for their Australian citizenship test.
+                The app provides a comprehensive study tool with over 318 practice questions covering all the essential areas
+                required to pass the official citizenship test.
+            </p>
+            <p>
+                What makes this app special is its bilingual support. Having gone through the immigration process myself,
+                I understand how challenging it can be to study for such an important test in a second language. That's why
+                I added Dari (Persian) language support alongside English, making the content accessible to the Afghan community
+                in Australia.
+            </p>
+        </section>
+
+        <section class="section">
+            <h2>App Screenshots</h2>
+            <div class="screenshot-grid">
+                <div class="screenshot">
+                    <img src="images/citizenship-app/IMG_0747.PNG" alt="Welcome Screen">
+                </div>
+                <div class="screenshot">
+                    <img src="images/citizenship-app/IMG_0748.PNG" alt="Home Dashboard">
+                </div>
+                <div class="screenshot">
+                    <img src="images/citizenship-app/IMG_0749.PNG" alt="Categories View">
+                </div>
+                <div class="screenshot">
+                    <img src="images/citizenship-app/IMG_0750.PNG" alt="Level Selection">
+                </div>
+                <div class="screenshot">
+                    <img src="images/citizenship-app/IMG_0751.PNG" alt="Question Interface">
+                </div>
+                <div class="screenshot">
+                    <img src="images/citizenship-app/IMG_0752.PNG" alt="User Profile">
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2>App Statistics</h2>
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-number">318+</div>
+                    <div class="stat-label">Practice Questions</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">4</div>
+                    <div class="stat-label">Study Categories</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">2</div>
+                    <div class="stat-label">Languages Supported</div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2>Key Features</h2>
+            <ul class="feature-list">
+                <li>
+                    <span class="feature-icon">1</span>
+                    <div>
+                        <strong>Bilingual Support</strong> - All questions available in both English and Dari, with audio pronunciation support to help users learn correct pronunciation.
+                    </div>
+                </li>
+                <li>
+                    <span class="feature-icon">2</span>
+                    <div>
+                        <strong>Progress Tracking</strong> - Track your overall progress, see how many questions you've completed, and monitor your average score across all categories.
+                    </div>
+                </li>
+                <li>
+                    <span class="feature-icon">3</span>
+                    <div>
+                        <strong>Gamified Learning</strong> - Level-based progression system with XP points and streaks to keep you motivated throughout your study journey.
+                    </div>
+                </li>
+                <li>
+                    <span class="feature-icon">4</span>
+                    <div>
+                        <strong>Comprehensive Categories</strong> - Covers all four essential areas: Australia and Its People, Democratic Beliefs, Government and Law, and Australian Values.
+                    </div>
+                </li>
+                <li>
+                    <span class="feature-icon">5</span>
+                    <div>
+                        <strong>Structured Learning Path</strong> - Each category has 10 levels with increasing difficulty, ensuring gradual and effective learning.
+                    </div>
+                </li>
+                <li>
+                    <span class="feature-icon">6</span>
+                    <div>
+                        <strong>User Profiles</strong> - Personal profiles to track your study time, questions answered, and achievement milestones.
+                    </div>
+                </li>
+            </ul>
+        </section>
+
+        <section class="section">
+            <div class="motivation-box">
+                <h3>Why I Built This</h3>
+                <p>
+                    As someone who has personally experienced the citizenship journey, I wanted to create a tool that
+                    would genuinely help others in the same situation. Many existing apps either lacked proper translations
+                    or didn't cater to non-English speakers effectively. This app bridges that gap by providing quality
+                    bilingual content with a focus on user experience and effective learning.
+                </p>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2>Technical Implementation</h2>
+            <p>
+                The app is built using Flutter, Google's cross-platform framework, allowing for a single codebase
+                that runs on both iOS and Android devices. Key technical aspects include:
+            </p>
+            <ul class="feature-list">
+                <li>
+                    <span class="feature-icon">&#8226;</span>
+                    <div><strong>State Management</strong> - Efficient state management for tracking user progress and quiz states.</div>
+                </li>
+                <li>
+                    <span class="feature-icon">&#8226;</span>
+                    <div><strong>Local Storage</strong> - Persistent storage for user progress and preferences, enabling offline study.</div>
+                </li>
+                <li>
+                    <span class="feature-icon">&#8226;</span>
+                    <div><strong>Clean Architecture</strong> - Modular code structure with separate layers for UI, business logic, and data.</div>
+                </li>
+                <li>
+                    <span class="feature-icon">&#8226;</span>
+                    <div><strong>Responsive Design</strong> - Adaptive layouts that work across different screen sizes and orientations.</div>
+                </li>
+            </ul>
+        </section>
+    </div>
+</body>
+</html>
